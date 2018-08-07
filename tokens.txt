@@ -1,0 +1,14 @@
+After
+Append
+Before
+Clear
+Containing
+Delete
+Ending
+Insert
+Lines
+Prepend
+Replace
+Starting
+With
+Wrap
