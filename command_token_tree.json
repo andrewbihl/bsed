@@ -3,51 +3,78 @@
   {
     "append":
     {
-
+      "reusable_components": ["text-with-text", "lines-relation-text-with-text"]
     },
     "clear":
     {
-
+      "reusable_components": ["line-types"]
     },
     "delete":
     {
-
+      "$USER_TEXT_INPUT": {},
+      "reusable_components": ["line-types"]
     },
     "insert":
     {
-
+      "reusable_components": ["text-with-text", "lines-relation-text-with-text"]
     },
     "prepend":
     {
-
+      "reusable_components": ["text-with-text", "lines-relation-text-with-text"]
     },
     "replace":
     {
-      "lines": {
-        "containing": {
-          "reusable_component": "TEXT-WITH-TEXT"
-        }
-      },
-      "$USER_TEXT_INPUT": {
-        "with": {
-          "$USER_TEXT_INPUT": {}
-        }
-      }
+      "reusable_components": ["text-with-text", "lines-relation-text-with-text"]
     },
     "wrap":
     {
-
+      "reusable_components": ["text-with-text", "lines-relation-text-with-text"]
     }
   },
   "reusable_components": {
 
-    "TEXT-WITH-TEXT": {
+    "text-with-text": {
       "$USER_TEXT_INPUT": {
         "with": {
           "$USER_TEXT_INPUT": {}
         }
       }
-    }
+    },
 
+    "line-types": {
+      "lines": {
+        "starting": {
+          "with": {
+            "$USER_TEXT_INPUT": {}
+          }
+        },
+        "ending": {
+          "with": {
+            "$USER_TEXT_INPUT": {}
+          }
+        },
+        "containing": {
+          "$USER_TEXT_INPUT": {}
+        }
+      }
+    },
+
+    "lines-relation-text-with-text": {
+      "lines": {
+        "starting": {
+          "with": {
+            "reusable_components" : ["text-with-text"]
+          }
+        },
+        "ending": {
+          "with": {
+            "reusable_components": ["text-with-text"]
+          }
+        },
+        "containing": {
+          "reusable_components": ["text-with-text"]
+        }
+      }
+    }
   }
 }
