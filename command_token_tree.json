@@ -1,0 +1,53 @@
+{
+  "root":
+  {
+    "append":
+    {
+
+    },
+    "clear":
+    {
+
+    },
+    "delete":
+    {
+
+    },
+    "insert":
+    {
+
+    },
+    "prepend":
+    {
+
+    },
+    "replace":
+    {
+      "lines": {
+        "containing": {
+          "reusable_component": "TEXT-WITH-TEXT"
+        }
+      },
+      "$USER_TEXT_INPUT": {
+        "with": {
+          "$USER_TEXT_INPUT": {}
+        }
+      }
+    },
+    "wrap":
+    {
+
+    }
+  },
+  "reusable_components": {
+
+    "TEXT-WITH-TEXT": {
+      "$USER_TEXT_INPUT": {
+        "with": {
+          "$USER_TEXT_INPUT": {}
+        }
+      }
+    }
+
+  }
+}
