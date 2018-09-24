@@ -15,11 +15,11 @@ if not path.exists(file_arg):
     exit(2)
 
 command_args = sys.argv[2:]
-start = -1
 
 
 def merge_quoted_phrases(cmd_args):
     """ Merge literal (quote-wrapped) inputs """
+    start = -1
     for i in range(len(cmd_args)):
         arg = cmd_args[i]
         if start >= 0:
