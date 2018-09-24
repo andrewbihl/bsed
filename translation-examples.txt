@@ -25,6 +25,10 @@ simplesed input.txt {DELETE/REPLACE/APPEND/PREPEND/WRAP} LINES CONTAINING
 
 simplesed input.txt CLEAR LINES STARTING WITH hello
 sed 's/^hello.*//g' input.txt
+simplesed input.txt CLEAR LINES CONTAINING hello
+sed 's/^.*hello.*//g'
+simplesed input.txt CLEAR LINES ENDING WITH hello
+sed 's/.*hello\n//g'
 
 simplesed input.txt DELETE LINES STARTING WITH hello
 sed '/^hello.*$/d' input.txt 

@@ -11,13 +11,13 @@ simplesed input.txt WRAP "hello" WITH "some-text"
 
 // lines
 
-simplesed input.txt {DELETE/REPLACE/APPEND/PREPEND/WRAP} LINES CONTAINING 
+simplesed input.txt {DELETE/REPLACE/APPEND/PREPEND/WRAP} LINES CONTAINING
 "hello"
 simplesed input.txt {DELETE/REPLACE/APPEND/PREPEND/WRAP} LINES STARTING WITH "hello"
 simplesed input.txt {DELETE/REPLACE/APPEND/PREPEND/WRAP} LINES ENDING WITH "hello"
 
 // advanced lines
-simplesed input.txt {BEFORE/AFTER} LINES {CONTAINING/STARTING WITH/ENDING WITH} "hello" INSERT "This is a new line!"
+simplesed input.txt INSERT "This is a new line!" {BEFORE/AFTER} LINES {CONTAINING/STARTING WITH/ENDING WITH} "hello"
 
 
 // prefilters

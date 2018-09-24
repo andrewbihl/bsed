@@ -18,7 +18,7 @@ class Token(IntEnum):
     Wrap = 13
 
 
-token_list = [
+command_token_tree = [
     'after',
     'append',
     'before',

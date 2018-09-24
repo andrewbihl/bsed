@@ -1,0 +1,4 @@
+{
+  "delete $USER_TEXT_INPUT": "sed 's/%s//g' %s",
+  "replace $USER_TEXT_INPUT with $USER_TEXT_INPUT": "sed 's/%s/%s/' %s"
+}
