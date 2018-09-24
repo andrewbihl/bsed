@@ -14,21 +14,27 @@ if not path.exists(file_arg):
     print('Invalid file.')
     exit(2)
 
-cmd_args = sys.argv[2:]
+command_args = sys.argv[2:]
 start = -1
-# Merge literal (quote-wrapped) inputs
-for i in range(len(cmd_args)):
-    arg = cmd_args[i]
-    if start >= 0:
-        if arg[-1] == '\"':
-            new_arg = ' '.join(cmd_args[start:i+1])
-            cmd_args = cmd_args[:start] + [new_arg] + cmd_args[i+1:]
-            start = -1
-            continue
-    else:
-        if arg[0] == '\"':
-            start = i
 
+
+def merge_quoted_phrases(cmd_args):
+    """ Merge literal (quote-wrapped) inputs """
+    for i in range(len(cmd_args)):
+        arg = cmd_args[i]
+        if start >= 0:
+            if arg[-1] == '\"':
+                new_arg = ' '.join(cmd_args[start:i+1])
+                cmd_args = cmd_args[:start] + [new_arg] + cmd_args[i+1:]
+                start = -1
+                continue
+        else:
+            if arg[0] == '\"':
+                start = i
+    return cmd_args
+
+
+cmd_args = merge_quoted_phrases(command_args)
 tree = token_tree.TokenTree.from_json(json_fp)
 cmd, user_text_inputs = tree.validate_command(cmd_args)
 if cmd is not None:
