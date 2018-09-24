@@ -3,7 +3,7 @@ from os import path, system
 import token_tree
 
 
-json_fp = 'command_token_tree.json'
+json_fp = path.join('config', 'command_token_tree.json')
 
 if len(sys.argv) < 2:
     print('Insufficient arguments. Usage: \'simplesed $input-file <commands>\'')

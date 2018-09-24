@@ -1,7 +1,7 @@
+from os import path
 import json
 import logging
 from enum import Enum
-from functools import reduce
 
 
 class Keyword(Enum):
@@ -10,8 +10,10 @@ class Keyword(Enum):
     USER_TEXT = '$USER_TEXT_INPUT'
 
 
-with open('command_translations.json', 'r') as fin:
-    command_translations: dict = json.load(fin)
+translations_fp = path.join('config', 'command_translations.json')
+with open(translations_fp, 'r') as fin:
+    command_translations = json.load(fin)
+
 
 class TokenNode:
     def __init__(self, text: str, children_nodes, depth: int):
