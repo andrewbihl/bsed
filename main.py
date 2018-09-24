@@ -34,9 +34,9 @@ def merge_quoted_phrases(cmd_args):
     return cmd_args
 
 
-cmd_args = merge_quoted_phrases(command_args)
+cmd_statement = merge_quoted_phrases(command_args)
 tree = token_tree.TokenTree.from_json(json_fp)
-cmd, user_text_inputs = tree.validate_command(cmd_args)
+cmd, user_text_inputs = tree.validate_command(cmd_statement)
 if cmd is not None:
     cmd = cmd % tuple(user_text_inputs + [file_arg])
     print(cmd)
