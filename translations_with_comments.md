@@ -37,7 +37,7 @@ print("Translated command:", command)
 - replace $USER_TEXT_INPUT with $USER_TEXT_INPUT
   1. `sed 's/%{1}/%{2}/' {0}`
 
-- append $USER_TEXT_INPUT with $USER_TEXT_INPUT: sed 's/{1}/{1}{2}/' {0}
+- append $USER_TEXT_INPUT with $USER_TEXT_INPUT
   1. `sed 's/{1}/{1}{2}/' {0}`
 
 - prepend $USER_TEXT_INPUT with $USER_TEXT_INPUT
@@ -112,22 +112,22 @@ This leaves blank lines behind
 ##### Wrap
 
 - wrap lines containing $USER_TEXT_INPUT with $USER_TEXT_INPUT
-  1. `sed '/{0}/ s/.*{2}&{2}/' {0}`
+  1. `sed '/{1}/ s/.*{2}&{2}/' {0}`
 
 - wrap lines starting with $USER_TEXT_INPUT with $USER_TEXT_INPUT
-  1. `sed '/^{0}/ s/.*{2}&{2}/' {0}`
+  1. `sed '/^{1}/ s/.*{2}&{2}/' {0}`
 
 - wrap lines ending with $USER_TEXT_INPUT with $USER_TEXT_INPUT
-  1. `sed '/{0}$/ s/.*{2}&{2}/' {0}`
+  1. `sed '/{1}$/ s/.*{2}&{2}/' {0}`
 
 
 ##### Select
 
-- select lines containing $USER_TEXT_INPUT with $USER_TEXT_INPUT
+- select lines containing $USER_TEXT_INPUT
   1. `grep {1} {0}`
 
-- select lines starting with $USER_TEXT_INPUT with $USER_TEXT_INPUT
+- select lines starting with $USER_TEXT_INPUT
   1. `grep ^{1} {0}`
 
-- select lines ending with $USER_TEXT_INPUT with $USER_TEXT_INPUT
+- select lines ending with $USER_TEXT_INPUT
   1. `grep {1}$ {0}`
