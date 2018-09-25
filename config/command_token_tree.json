@@ -29,6 +29,10 @@
     "wrap":
     {
       "reusable_components": ["text-with-text", "lines-relation-text-with-text"]
+    },
+    "select":
+    {
+      "reusable_components": ["line-types"]
     }
   },
   "reusable_components": {
