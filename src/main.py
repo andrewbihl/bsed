@@ -1,9 +1,9 @@
 import sys
-from os import path, system
-import token_tree
+from os import system, path
+from src import token_tree
+from src import definitions
 
-
-json_fp = path.join('config', 'command_token_tree.json')
+command_tree_fp = definitions.COMMAND_TOKEN_TREE
 
 if len(sys.argv) < 2:
     print('Insufficient arguments. Usage: \'simplesed $input-file <commands>\'')
@@ -35,10 +35,11 @@ def merge_quoted_phrases(cmd_args):
 
 
 cmd_statement = merge_quoted_phrases(command_args)
-tree = token_tree.TokenTree.from_json(json_fp)
+tree = token_tree.TokenTree.from_json(command_tree_fp)
 cmd, user_text_inputs = tree.validate_command(cmd_statement)
 if cmd is not None:
-    cmd = cmd % tuple(user_text_inputs + [file_arg])
+    args = [file_arg] + user_text_inputs
+    cmd = cmd.format(*args)
     print(cmd)
     system(cmd)
 # tree.print_command_tree()

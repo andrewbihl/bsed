@@ -1,4 +1,3 @@
-from os import path
 import json
 import logging
 from enum import Enum
