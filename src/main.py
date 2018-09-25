@@ -1,7 +1,7 @@
 import sys
 from os import system, path
-from src import token_tree
-from src import definitions
+import token_tree
+import definitions
 
 command_tree_fp = definitions.COMMAND_TOKEN_TREE
 

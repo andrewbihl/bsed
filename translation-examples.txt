@@ -61,11 +61,7 @@ simplesed input.txt PREPEND word-to-find WITH some-text
 simplesed input.txt WRAP word-to-find WITH some-text
 
 
-sed '/hello/d' input.txt > output.txt
-simplesed input.txt DELETE LINES WITH hello
 
-???
-simplesed input.txt CLEAR LINES WITH
 
 sed 's/.*hello.*/WORLD/' sed 's/.*hello.*/WORLD/' input.txt 
 simplesed input.txt REPLACE LINES WITH hello WITH world

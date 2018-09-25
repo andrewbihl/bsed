@@ -1,6 +1,7 @@
 import json
 import logging
 from enum import Enum
+import definitions
 
 
 class Keyword(Enum):
@@ -9,7 +10,7 @@ class Keyword(Enum):
     USER_TEXT = '$USER_TEXT_INPUT'
 
 
-translations_fp = path.join('config', 'command_translations.json')
+translations_fp = definitions.COMMAND_TRANSLATIONS_FILE
 with open(translations_fp, 'r') as fin:
     command_translations = json.load(fin)
 
