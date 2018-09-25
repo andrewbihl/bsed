@@ -1,2 +1,2 @@
 # SimpleSed
-SQL-like syntax on top of sed text processing
+SQL-like syntax on top of sed/grep/awk text processing
