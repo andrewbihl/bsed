@@ -1,6 +1,10 @@
 # User defined
 .idea
 .DS_Store
+release_build
+boostnote.json
+notes
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
