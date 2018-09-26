@@ -2,9 +2,9 @@
 
 import sys
 from os import system, path
-import token_tree
-import definitions
-import arg_process
+from .token_tree import TokenTree
+import bted.definitions as definitions
+from .arg_process import process_args
 
 command_tree_fp = definitions.COMMAND_TOKEN_TREE
 
@@ -21,8 +21,8 @@ def main():
 
     command_args = sys.argv[2:]
 
-    cmd_statement = arg_process.process_args(command_args)
-    tree = token_tree.TokenTree.from_json(command_tree_fp)
+    cmd_statement = process_args(command_args)
+    tree = TokenTree.from_json(command_tree_fp)
     # tree.print_command_tree()
     cmd, user_text_inputs = tree.validate_command(cmd_statement)
     if cmd is not None:

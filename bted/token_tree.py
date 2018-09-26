@@ -1,7 +1,7 @@
 import json
 import logging
 from enum import Enum
-import definitions
+import bted.definitions as definitions
 
 
 class Keyword(Enum):
