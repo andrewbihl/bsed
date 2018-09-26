@@ -8,7 +8,7 @@ This is a general outline of the stages of conversion. Details are excluded.
 file_name = 'input.txt'
 input_str = 'prepend hello with world'
 normalized_command = 'prepend $USER_TEXT_INPUT with $USER_TEXT_INPUT'
-command_template = """sed 's/{1}/{2}{1}{2}/' {0}"""
+command_template = """sed 's/{1}/{2}{1}/' {0}"""
 text_inputs = ['input.txt', 'hello', 'world']
 command = command_template.format(*text_inputs)
 print("Translated command:", command)
