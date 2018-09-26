@@ -30,5 +30,3 @@ if cmd is not None:
     system(cmd)
 else:
     print('Invalid command.')
-
-
