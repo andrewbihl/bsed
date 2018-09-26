@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import sys
 from os import system, path
 import token_tree
