@@ -22,7 +22,7 @@
   "wrap lines containing $USER_TEXT_INPUT with $USER_TEXT_INPUT": "sed  '/{1}/ s/.*/{2}&{2}/' {0}",
   "wrap lines starting with $USER_TEXT_INPUT with $USER_TEXT_INPUT": "sed '/^{1}/ s/.*/{2}&{2}/' {0}",
   "wrap lines ending with $USER_TEXT_INPUT with $USER_TEXT_INPUT": "sed '/{1}$/ s/.*/{2}&{2}/' {0}",
-  "select lines containing $USER_TEXT_INPUT": "grep {1} {0}",
-  "select lines starting with $USER_TEXT_INPUT": "grep ^{1} {0}",
-  "select lines ending with $USER_TEXT_INPUT": "grep {1}$ {0}"
+  "select lines containing $USER_TEXT_INPUT": "grep '{1}' {0}",
+  "select lines starting with $USER_TEXT_INPUT": "grep '^{1}' {0}",
+  "select lines ending with $USER_TEXT_INPUT": "grep '{1}$' {0}"
 }
