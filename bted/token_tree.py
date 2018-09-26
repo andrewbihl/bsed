@@ -10,11 +10,6 @@ class Keyword(Enum):
     USER_TEXT = '$USER_TEXT_INPUT'
 
 
-translations_fp = definitions.COMMAND_TRANSLATIONS_FILE
-with open(translations_fp, 'r') as fin:
-    command_translations = json.load(fin)
-
-
 class TokenNode:
     def __init__(self, text: str, children_nodes, depth: int):
         self.text = text
@@ -50,9 +45,10 @@ class TokenNode:
 
 class TokenTree:
 
-    def __init__(self, json_dict: dict):
-        self.json_dict = json_dict
-        self.root = self.enumerate_node_dict(self.json_dict['root'], '')
+    def __init__(self, command_tree: dict, translations: dict):
+        self.command_tree = command_tree
+        self.command_translations = translations
+        self.root = self.enumerate_node_dict(self.command_tree['root'], '')
 
     @staticmethod
     def normalized_command_string(command_nodes: [TokenNode]):
@@ -88,8 +84,8 @@ class TokenTree:
         valid_command = command_nodes[-1].terminates_command()
         if valid_command:
             normalized_cmd = TokenTree.normalized_command_string(command_nodes)
-            if normalized_cmd in command_translations:
-                return command_translations[normalized_cmd], user_text_inputs
+            if normalized_cmd in self.command_translations:
+                return self.command_translations[normalized_cmd], user_text_inputs
             else:
                 logging.error('Not yet implemented command of form: \"%s\"' % normalized_cmd)
         return None, None
@@ -99,14 +95,16 @@ class TokenTree:
         if Keyword.REUSABLE_COMPONENTS.value in node:
             reusable_component_identifiers = node.pop(Keyword.REUSABLE_COMPONENTS.value)
             for identifier in reusable_component_identifiers:
-                node.update(self.json_dict[Keyword.REUSABLE_COMPONENTS.value][identifier])
+                node.update(self.command_tree[Keyword.REUSABLE_COMPONENTS.value][identifier])
         for child_text, child_dict in node.items():
             child = self.enumerate_node_dict(child_dict, child_text, start_depth + 1)
             children_nodes[child_text] = child
         return TokenNode(node_text, children_nodes, start_depth)
 
     @classmethod
-    def from_json(cls, file_path):
-        with open(file_path, 'r') as fin:
+    def from_json(cls, command_tree_file, translations_file):
+        with open(command_tree_file, 'r') as fin:
             tree_dict = json.load(fin)
-        return TokenTree(tree_dict)
+        with open(translations_file, 'r') as fin:
+            command_translations = json.load(fin)
+        return TokenTree(tree_dict, command_translations)

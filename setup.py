@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="bted",
-    version="0.0.6",
+    version="0.0.7",
     author="Andrew Bihl",
     author_email="andrewbihlva@gmail.com",
     description="A simple syntax for text editing.",
@@ -20,7 +20,8 @@ setuptools.setup(
     ],
     entry_points={
         'console_scripts': [
-            'bted = bted.interpreter:main'
+            'bted = bted.interpreter:main',
+            'bted-commands = bted.interpreter:print_commands'
         ]
     },
     include_package_data=True
