@@ -2,6 +2,7 @@ import sys
 from os import system, path
 import token_tree
 import definitions
+import arg_process
 
 command_tree_fp = definitions.COMMAND_TOKEN_TREE
 
@@ -16,25 +17,7 @@ if not path.exists(file_arg):
 
 command_args = sys.argv[2:]
 
-
-def merge_quoted_phrases(cmd_args):
-    """ Merge literal (quote-wrapped) inputs """
-    start = -1
-    for i in range(len(cmd_args)):
-        arg = cmd_args[i]
-        if start >= 0:
-            if arg[-1] == '\"':
-                new_arg = ' '.join(cmd_args[start:i+1])
-                cmd_args = cmd_args[:start] + [new_arg] + cmd_args[i+1:]
-                start = -1
-                continue
-        else:
-            if arg[0] == '\"':
-                start = i
-    return cmd_args
-
-
-cmd_statement = merge_quoted_phrases(command_args)
+cmd_statement = arg_process.process_args(command_args)
 tree = token_tree.TokenTree.from_json(command_tree_fp)
 cmd, user_text_inputs = tree.validate_command(cmd_statement)
 if cmd is not None:
@@ -42,6 +25,8 @@ if cmd is not None:
     cmd = cmd.format(*args)
     print(cmd)
     system(cmd)
+else:
+    print('Invalid command.')
 # tree.print_command_tree()
 
 
