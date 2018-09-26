@@ -1,6 +1,6 @@
 {
   "delete $USER_TEXT_INPUT": "sed 's/{1}//g' {0}",
-  "replace $USER_TEXT_INPUT with $USER_TEXT_INPUT": "sed 's/%{1}/%{2}/' {0}",
+  "replace $USER_TEXT_INPUT with $USER_TEXT_INPUT": "sed 's/{1}/{2}/' {0}",
   "append $USER_TEXT_INPUT with $USER_TEXT_INPUT": "sed 's/{1}/{1}{2}/' {0}",
   "prepend $USER_TEXT_INPUT with $USER_TEXT_INPUT": "sed 's/{1}/{2}{1}/' {0}",
   "wrap $USER_TEXT_INPUT with $USER_TEXT_INPUT": "sed 's/{1}/{2}{1}{2}/' {0}",
