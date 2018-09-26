@@ -25,7 +25,7 @@ def print_commands():
 def main():
 
     if len(sys.argv) < 2:
-        print('Insufficient arguments. Usage: \'simplesed $input-file <commands>\'')
+        print('Insufficient arguments. Usage: \'bted $input-file <commands>\'')
         exit(1)
 
     file_arg = sys.argv[1]
