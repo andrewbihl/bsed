@@ -19,6 +19,7 @@ command_args = sys.argv[2:]
 
 cmd_statement = arg_process.process_args(command_args)
 tree = token_tree.TokenTree.from_json(command_tree_fp)
+# tree.print_command_tree()
 cmd, user_text_inputs = tree.validate_command(cmd_statement)
 if cmd is not None:
     args = [file_arg] + user_text_inputs
@@ -27,6 +28,5 @@ if cmd is not None:
     system(cmd)
 else:
     print('Invalid command.')
-# tree.print_command_tree()
 
 
