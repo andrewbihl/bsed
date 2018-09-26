@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="bted",
-    version="0.0.2",
+    version="0.0.3",
     author="Andrew Bihl",
     author_email="andrewbihlva@gmail.com",
     description="A simple syntax for text editing.",
