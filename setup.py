@@ -20,7 +20,7 @@ setuptools.setup(
     ],
     entry_points={
         'console_scripts': [
-            'bted = bted.main:main'
+            'bted = bted.interpreter:main'
         ]
     }
 )
