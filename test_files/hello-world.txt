@@ -8,7 +8,9 @@ Hello world
 Hello World
 helloworld
 HelloWorld
-
+worldhello
+world hello
+world Hello
 *
 -
 /
