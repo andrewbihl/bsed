@@ -8,3 +8,10 @@ Hello world
 Hello World
 helloworld
 HelloWorld
+
+*
+-
+/
+\n
+\t
+
