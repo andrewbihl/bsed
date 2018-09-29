@@ -1,5 +1,5 @@
 import sys
-from os import system, path
+from os import system, path, popen
 import json
 
 from .token_tree import TokenTree
@@ -20,7 +20,7 @@ class Interpreter:
         for k in self.tree.command_translations:
             print(' >', k)
 
-    def build_command(self, command_args, file_arg):
+    def build_command(self, command_args, file_arg) -> (str, [str]):
         cmd_statement, flags = process_args(command_args)
         unsupported_flags = [f for f in flags if f not in accepted_flags]
         if len(unsupported_flags) > 0:
@@ -36,12 +36,16 @@ class Interpreter:
         return cmd, flags
 
     @classmethod
-    def execute_command(cls, cmd, flags):
+    def execute_command(cls, cmd, flags, return_output=False):
         translation_only = '-t' in flags
         if translation_only:
             print('Translation:\n >', cmd)
         else:
+            if return_output:
+                with popen(cmd) as fout:
+                    return fout.read()
             system(cmd)
+        return None
 
 
 def main():

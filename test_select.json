@@ -1,3 +1,21 @@
 {
-
+  "test_select_lines_containing_word": [
+    {
+      "input": "hello-world.txt",
+      "expected": "hello-world-test_select_lines_containing_hello.txt",
+      "command": ["select", "lines", "containing", "hello"]
+    }],
+  "test_select_lines_starting_with_word": [
+    {
+      "input": "hello-world.txt",
+      "expected": "hello-world-test_select_lines_starting_with_hello.txt",
+      "command": ["select", "lines", "starting", "with", "hello"]
+    }],
+  "test_select_lines_ending_with_word": [
+    {
+      "input": "hello-world.txt",
+      "expected": "hello-world-test_select_lines_ending_with_hello.txt",
+      "command": ["select", "lines", "ending", "with", "hello"]
+    }
+  ]
 }
