@@ -1,9 +1,9 @@
 {
   "delete $USER_TEXT_INPUT": "sed 's/{1}//g' {0}",
-  "replace $USER_TEXT_INPUT with $USER_TEXT_INPUT": "sed 's/{1}/{2}/' {0}",
-  "append $USER_TEXT_INPUT with $USER_TEXT_INPUT": "sed 's/{1}/{1}{2}/' {0}",
-  "prepend $USER_TEXT_INPUT with $USER_TEXT_INPUT": "sed 's/{1}/{2}{1}/' {0}",
-  "wrap $USER_TEXT_INPUT with $USER_TEXT_INPUT": "sed 's/{1}/{2}{1}{2}/' {0}",
+  "replace $USER_TEXT_INPUT with $USER_TEXT_INPUT": "sed 's/{1}/{2}/g' {0}",
+  "append $USER_TEXT_INPUT with $USER_TEXT_INPUT": "sed 's/{1}/{1}{2}/g' {0}",
+  "prepend $USER_TEXT_INPUT with $USER_TEXT_INPUT": "sed 's/{1}/{2}{1}/g' {0}",
+  "wrap $USER_TEXT_INPUT with $USER_TEXT_INPUT": "sed 's/{1}/{2}{1}{2}/g' {0}",
   "delete lines containing $USER_TEXT_INPUT": "sed '/{1}/d' {0}",
   "delete lines starting with $USER_TEXT_INPUT": "sed '/^{1}/d' {0}",
   "delete lines ending with $USER_TEXT_INPUT": "sed '/{1}$/d' {0}",
