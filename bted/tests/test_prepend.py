@@ -7,16 +7,16 @@ import bted.definitions as definitions
 from bted import interpreter
 
 tests_dir = 'test_files'
-delete_tests = 'test_delete.json'
+clear_tests = 'test_prepend.json'
 
 
-class TestDelete(unittest.TestCase):
+class TestPrepend(unittest.TestCase):
 
     def setUp(self):
         command_tree_fp = definitions.COMMAND_TOKEN_TREE
         translations_fp = definitions.COMMAND_TRANSLATIONS_FILE
         self.interpreter = interpreter.Interpreter(command_tree_fp, translations_fp)
-        with open(delete_tests, 'r') as fin:
+        with open(clear_tests, 'r') as fin:
             self.tests = json.load(fin)
 
     def perform_test(self, command: [str], input_file: str, expected_result_file: str):
@@ -31,18 +31,18 @@ class TestDelete(unittest.TestCase):
         for t in tests:
             self.perform_test(t["command"], path.join(tests_dir, t["input"]), path.join(tests_dir, t["expected"]))
 
-    def test_delete_word(self):
+    def test_prepend_word(self):
         func_name = inspect.stack()[0].function
         self.perform_test_from_key(func_name)
 
-    def test_delete_lines_containing_word(self):
+    def test_prepend_lines_containing_word(self):
         func_name = inspect.stack()[0].function
         self.perform_test_from_key(func_name)
 
-    def test_delete_lines_starting_with_word(self):
+    def test_prepend_lines_starting_with_word(self):
         func_name = inspect.stack()[0].function
         self.perform_test_from_key(func_name)
 
-    def test_delete_lines_ending_with_word(self):
+    def test_prepend_lines_ending_with_word(self):
         func_name = inspect.stack()[0].function
         self.perform_test_from_key(func_name)

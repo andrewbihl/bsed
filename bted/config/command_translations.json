@@ -16,7 +16,7 @@
   "append lines containing $USER_TEXT_INPUT with $USER_TEXT_INPUT": "sed -e '/{1}/s/$/{2}/' {0}",
   "append lines starting with $USER_TEXT_INPUT with $USER_TEXT_INPUT": "sed -e '/^{1}/s/$/{2}/' {0}",
   "append lines ending with $USER_TEXT_INPUT with $USER_TEXT_INPUT": "sed -e '/{1}$/s/$/{2}/' {0}",
-  "prepend lines containing $USER_TEXT_INPUT with $USER_TEXT_INPUT": "sed -e '/{1}/s/$/{2}/' {0}",
+  "prepend lines containing $USER_TEXT_INPUT with $USER_TEXT_INPUT": "sed -e '/{1}/s/^/{2}/' {0}",
   "prepend lines starting with $USER_TEXT_INPUT with $USER_TEXT_INPUT": "sed -e '/^{1}/s/^/{2}/' {0}",
   "prepend lines ending with $USER_TEXT_INPUT with $USER_TEXT_INPUT": "sed -e '/{1}$/s/^/{2}/' {0}",
   "wrap lines containing $USER_TEXT_INPUT with $USER_TEXT_INPUT": "sed  '/{1}/ s/.*/{2}&{2}/' {0}",

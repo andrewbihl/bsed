@@ -10,7 +10,7 @@ tests_dir = 'test_files'
 clear_tests = 'test_append.json'
 
 
-class TestClear(unittest.TestCase):
+class TestAppend(unittest.TestCase):
 
     def setUp(self):
         command_tree_fp = definitions.COMMAND_TOKEN_TREE
