@@ -1,6 +1,5 @@
 import sys
 from os import system, path, popen
-import json
 
 from .token_tree import TokenTree
 import bted.definitions as definitions
