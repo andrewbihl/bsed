@@ -56,13 +56,18 @@ def main():
               '> bted example.txt prepend beat with "Don\'t stop the "')
         exit(1)
 
-    file_arg = sys.argv[1]
-    if not path.exists(file_arg):
+    if path.exists(sys.argv[1]):
+        file_arg = sys.argv[1]
+        command_args = sys.argv[2:]
+    elif path.exists(sys.argv[-1]):
+        file_arg = sys.argv[-1]
+        command_args = sys.argv[1:-1]
+    else:
         print('File not found.')
         exit(2)
 
     interpreter = Interpreter(command_tree_fp, translations_fp)
-    cmd, flags = interpreter.build_command(sys.argv[2:], file_arg)
+    cmd, flags = interpreter.build_command(command_args, file_arg)
     if cmd is not None:
         interpreter.execute_command(cmd, flags)
     else:
