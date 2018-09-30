@@ -50,9 +50,9 @@ class Interpreter:
 def main():
     if len(sys.argv) < 2:
         print('Insufficient arguments. Format: \'bted <input-file> <command statement>\'\n'
-              'For example: \n'
+              'Examples: \n'
               '> bted example.txt delete lines starting with "example Phrase"\n'
-              '> bted example.txt select lines containing "Andrew"\n'
+              '> bted example.txt select lines containing Andrew\n'
               '> bted example.txt prepend beat with "Don\'t stop the "')
         exit(1)
 
