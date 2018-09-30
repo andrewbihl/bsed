@@ -1,0 +1,19 @@
+helloANDREW BIHL
+Hello
+world
+World
+hello world
+hello World
+Hello world
+Hello World
+helloworld
+HelloWorld
+worldhelloANDREW BIHL
+world helloANDREW BIHL
+world Hello
+*
+-
+/
+\n
+\t
+
