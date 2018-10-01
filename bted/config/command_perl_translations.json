@@ -1,0 +1,3 @@
+{
+  "replace $USER_TEXT_INPUT with $USER_TEXT_INPUT": "perl -wnl -e 's/{1}/{2}/g; print;' {0}"
+}

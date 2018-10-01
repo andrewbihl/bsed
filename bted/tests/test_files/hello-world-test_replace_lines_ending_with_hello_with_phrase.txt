@@ -1,0 +1,19 @@
+This is a sentence
+Hello
+world
+World
+hello world
+hello World
+Hello world
+Hello World
+helloworld
+HelloWorld
+This is a sentence
+This is a sentence
+world Hello
+*
+-
+/
+\n
+\t
+
