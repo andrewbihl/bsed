@@ -10,7 +10,7 @@ tests_dir = 'test_files'
 clear_tests = 'test_wrap.json'
 
 
-class TestPrepend(unittest.TestCase):
+class TestWrap(unittest.TestCase):
 
     def setUp(self):
         command_tree_fp = definitions.COMMAND_TOKEN_TREE
@@ -24,7 +24,7 @@ class TestPrepend(unittest.TestCase):
             expected = fin.read()
         cmd, flags = self.interpreter.build_command(command, input_file)
         res = self.interpreter.execute_command(cmd, flags, return_output=True)
-        self.assertEqual(res, expected)
+        self.assertEqual(expected, res)
 
     def perform_test_from_key(self, key: str):
         tests = self.tests[key]

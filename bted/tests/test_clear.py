@@ -24,7 +24,7 @@ class TestClear(unittest.TestCase):
             expected = fin.read()
         cmd, flags = self.interpreter.build_command(command, input_file)
         res = self.interpreter.execute_command(cmd, flags, return_output=True)
-        self.assertEqual(res, expected)
+        self.assertEqual(expected, res)
 
     def perform_test_from_key(self, key: str):
         tests = self.tests[key]
