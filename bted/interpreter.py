@@ -5,12 +5,10 @@ from .token_tree import TokenTree
 import bted.definitions as definitions
 from .arg_process import process_args
 
-command_tree_fp = definitions.COMMAND_TOKEN_TREE
-translations_fp = definitions.COMMAND_TRANSLATIONS_FILE
-accepted_flags = {'-t'}
-
 
 class Interpreter:
+    accepted_flags = {'-t'}
+
     def __init__(self, command_tree_file, translations_file):
         self.tree = TokenTree.from_json(command_tree_file, translations_file)
 
@@ -21,7 +19,7 @@ class Interpreter:
 
     def build_command(self, command_args, file_arg) -> (str, [str]):
         cmd_statement, flags = process_args(command_args)
-        unsupported_flags = [f for f in flags if f not in accepted_flags]
+        unsupported_flags = [f for f in flags if f not in Interpreter.accepted_flags]
         if len(unsupported_flags) > 0:
             print('Invalid flags:', unsupported_flags)
             return None, None
@@ -47,6 +45,16 @@ class Interpreter:
         return None
 
 
+def default_interpreter():
+    command_tree_fp = definitions.COMMAND_TOKEN_TREE
+    translations_fp = definitions.COMMAND_TRANSLATIONS_FILE
+    return Interpreter(command_tree_fp, translations_fp)
+
+
+def print_commands():
+    default_interpreter().print_commands()
+
+
 def main():
     if len(sys.argv) < 2:
         print('Insufficient arguments. Format: \'bted <input-file> <command statement>\'\n'
@@ -66,7 +74,7 @@ def main():
         print('File not found.')
         exit(2)
 
-    interpreter = Interpreter(command_tree_fp, translations_fp)
+    interpreter = default_interpreter()
     cmd, flags = interpreter.build_command(command_args, file_arg)
     if cmd is not None:
         interpreter.execute_command(cmd, flags)
