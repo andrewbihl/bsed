@@ -1,6 +1,6 @@
 import sys
 from os import system, path, popen
-
+import subprocess
 from .token_tree import TokenTree
 import bted.definitions as definitions
 from .arg_process import process_args
@@ -34,15 +34,26 @@ class Interpreter:
 
     @classmethod
     def execute_command(cls, cmd, flags, return_output=False):
+        res = None
         translation_only = '-t' in flags
         if translation_only:
             print('Translation:\n >', cmd)
         else:
-            if return_output:
-                with popen(cmd) as fout:
-                    return fout.read()
-            system(cmd)
-        return None
+            # if return_output:
+            #     with popen(cmd) as fout:
+            #         return fout.read()
+            stdout = subprocess.PIPE if return_output else None
+            with subprocess.Popen(cmd, shell=True, stdout=stdout) as p:
+                try:
+                    # exit_code = subprocess.call(cmd, shell=True, stdout=stdout)
+                    exit_code = p.wait()
+                    if exit_code < 0:
+                        print("Child was terminated by signal", -exit_code, file=sys.stderr)
+                except OSError as e:
+                    print("Execution failed:", e, file=sys.stderr)
+                if return_output:
+                    res = p.stdout
+        return res
 
 
 def default_interpreter():
