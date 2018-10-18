@@ -13,15 +13,17 @@ class Interpreter:
         self.tree = TokenTree.from_json(command_tree_file, translations_file)
 
     def print_commands(self):
-        print("Supported commands:")
+        print("Supported commands:", file=sys.stderr)
         for k in self.tree.command_translations:
-            print(' >', k)
+            print(' >', k, file=sys.stderr)
 
     def build_command(self, command_args, file_arg) -> (str, [str]):
+        if file_arg is None:
+            file_arg = ''
         cmd_statement, flags = process_args(command_args)
         unsupported_flags = [f for f in flags if f not in Interpreter.accepted_flags]
         if len(unsupported_flags) > 0:
-            print('Invalid flags:', unsupported_flags)
+            print('Invalid flags:', unsupported_flags, file=sys.stderr)
             return None, None
 
         # tree.print_command_tree()
@@ -33,7 +35,7 @@ class Interpreter:
         return cmd, flags
 
     @classmethod
-    def execute_command(cls, cmd, flags, return_output=False):
+    def execute_command(cls, cmd, flags, return_output=False, stdin=sys.stdin):
         res = None
         translation_only = '-t' in flags
         if translation_only:
@@ -43,7 +45,7 @@ class Interpreter:
             #     with popen(cmd) as fout:
             #         return fout.read()
             stdout = subprocess.PIPE if return_output else None
-            with subprocess.Popen(cmd, shell=True, stdout=stdout) as p:
+            with subprocess.Popen(cmd, shell=True, stdout=stdout, stdin=stdin) as p:
                 try:
                     # exit_code = subprocess.call(cmd, shell=True, stdout=stdout)
                     exit_code = p.wait()
@@ -72,9 +74,15 @@ def main():
               'Examples: \n'
               '> bted example.txt delete lines starting with "example Phrase"\n'
               '> bted example.txt select lines containing Andrew\n'
-              '> bted example.txt prepend beat with "Don\'t stop the "')
+              '> bted example.txt prepend beat with "Don\'t stop the "', file=sys.stderr)
         exit(1)
 
+    # std_in = None
+    # if sys.stdin is not None:
+    #     file_arg = None
+    #     command_args = sys.argv[1:]
+    #     std_in = sys.stdin
+    file_arg = None
     if path.exists(sys.argv[1]):
         file_arg = sys.argv[1]
         command_args = sys.argv[2:]
@@ -82,12 +90,12 @@ def main():
         file_arg = sys.argv[-1]
         command_args = sys.argv[1:-1]
     else:
-        print('File not found.')
-        exit(2)
+        print('File not found. Reading from standard input.', file=sys.stderr)
+        command_args = sys.argv[1:]
 
     interpreter = default_interpreter()
     cmd, flags = interpreter.build_command(command_args, file_arg)
     if cmd is not None:
         interpreter.execute_command(cmd, flags)
     else:
-        print('Invalid command.')
+        print('Invalid command.', file=sys.stderr)
