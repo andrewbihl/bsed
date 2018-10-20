@@ -2,28 +2,28 @@
   "test_append_word": [
     {
       "input": "hello-world.txt",
-      "expected": "hello-world-test_append_hello_with_ANDREW BIHL.txt",
+      "expected": "hello-world_append_hello_with_ANDREW BIHL.txt",
       "command": ["append", "hello", "with", "ANDREW BIHL"]
     }
   ],
   "test_append_lines_containing_word": [
     {
       "input": "hello-world.txt",
-      "expected": "hello-world-test_append_lines_containing_hello_with_ANDREW BIHL.txt",
+      "expected": "hello-world_append_lines_containing_hello_with_ANDREW BIHL.txt",
       "command": ["append", "lines", "containing", "hello", "with", "ANDREW BIHL"]
     }
   ],
   "test_append_lines_starting_with_word": [
     {
       "input": "hello-world.txt",
-      "expected": "hello-world-test_append_lines_starting_with_ANDREW BIHL.txt",
+      "expected": "hello-world_append_lines_starting_with_ANDREW BIHL.txt",
       "command": ["append", "lines", "starting", "with", "hello", "with", "ANDREW BIHL"]
     }
   ],
   "test_append_lines_ending_with_word": [
     {
       "input": "hello-world.txt",
-      "expected": "hello-world-test_append_lines_ending_with_ANDREW BIHL.txt",
+      "expected": "hello-world_append_lines_ending_with_ANDREW BIHL.txt",
       "command": ["append", "lines", "ending", "with", "hello", "with", "ANDREW BIHL"]
     }
   ]

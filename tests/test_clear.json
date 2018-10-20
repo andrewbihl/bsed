@@ -2,19 +2,19 @@
   "test_clear_lines_containing_word": [
     {
       "input": "hello-world.txt",
-      "expected": "hello-world-test_clear_lines_containing_hello.txt",
+      "expected": "hello-world_clear_lines_containing_hello.txt",
       "command": ["clear", "lines", "containing", "hello"]
     }],
   "test_clear_lines_starting_with_word": [
     {
       "input": "hello-world.txt",
-      "expected": "hello-world-test_clear_lines_starting_with_hello.txt",
+      "expected": "hello-world_clear_lines_starting_with_hello.txt",
       "command": ["clear", "lines", "starting", "with", "hello"]
     }],
   "test_clear_lines_ending_with_word": [
     {
       "input": "hello-world.txt",
-      "expected": "hello-world-test_clear_lines_ending_with_hello.txt",
+      "expected": "hello-world_clear_lines_ending_with_hello.txt",
       "command": ["clear", "lines", "ending", "with", "hello"]
     }
   ]

@@ -43,3 +43,7 @@ class TestSelect(unittest.TestCase):
     def test_select_lines_ending_with_word(self):
         func_name = inspect.stack()[0].function
         self.perform_test_from_key(func_name)
+
+    def test_select_lines_m_to_n(self):
+        func_name = inspect.stack()[0].function
+        self.perform_test_from_key(func_name)

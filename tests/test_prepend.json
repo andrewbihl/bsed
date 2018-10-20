@@ -2,28 +2,28 @@
   "test_prepend_word": [
     {
       "input": "hello-world.txt",
-      "expected": "hello-world-test_prepend_hello_with_ANDREW BIHL.txt",
+      "expected": "hello-world_prepend_hello_with_ANDREW BIHL.txt",
       "command": ["prepend", "hello", "with", "ANDREW BIHL"]
     }
   ],
   "test_prepend_lines_containing_word": [
     {
       "input": "hello-world.txt",
-      "expected": "hello-world-test_prepend_lines_containing_hello_with_ANDREW BIHL.txt",
+      "expected": "hello-world_prepend_lines_containing_hello_with_ANDREW BIHL.txt",
       "command": ["prepend", "lines", "containing", "hello", "with", "ANDREW BIHL"]
     }
   ],
   "test_prepend_lines_starting_with_word": [
     {
       "input": "hello-world.txt",
-      "expected": "hello-world-test_prepend_lines_starting_with_hello_with_ANDREW BIHL.txt",
+      "expected": "hello-world_prepend_lines_starting_with_hello_with_ANDREW BIHL.txt",
       "command": ["prepend", "lines", "starting", "with", "hello", "with", "ANDREW BIHL"]
     }
   ],
   "test_prepend_lines_ending_with_word": [
     {
       "input": "hello-world.txt",
-      "expected": "hello-world-test_prepend_lines_ending_with_hello_with_ANDREW BIHL.txt",
+      "expected": "hello-world_prepend_lines_ending_with_hello_with_ANDREW BIHL.txt",
       "command": ["prepend", "lines", "ending", "with", "hello", "with", "ANDREW BIHL"]
     }
   ]
