@@ -7,7 +7,7 @@
   "delete lines containing $USER_TEXT_INPUT": "perl -ne '/{1}/ or print' {0}",
   "delete lines starting with $USER_TEXT_INPUT": "perl -ne '/^{1}/ or print' {0}",
   "delete lines ending with $USER_TEXT_INPUT": "perl -ne '/{1}$/ or print' {0}",
-  "delete lines $USER_LINE_START_INDEX to $USER_LINE_END_INDEX": "echo Not Implemented.",
+  "delete lines $USER_LINE_START_INDEX to $USER_LINE_END_INDEX": "perl -ne 'print if $. < {1} | $. > {2}' {0}",
   "clear lines containing $USER_TEXT_INPUT": "perl -wnl -e 's/.*{1}.*//g; print;' {0}",
   "clear lines starting with $USER_TEXT_INPUT": "perl -wnl -e 's/^{1}.*//g; print;' {0}",
   "clear lines ending with $USER_TEXT_INPUT": "perl -wnl -e 's/.*{1}$//g; print;' {0}",
