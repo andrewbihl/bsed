@@ -3,11 +3,12 @@ from os import path
 import json
 import inspect
 
+from .context import bted
 import bted.definitions as definitions
 from bted import interpreter
 
-tests_dir = 'test_files'
-clear_tests = 'test_clear.json'
+test_files_dir = path.join(definitions.TESTS_DIR, 'test_files')
+clear_tests = path.join(definitions.TESTS_DIR, 'test_clear.json')
 
 
 class TestClear(unittest.TestCase):
@@ -29,7 +30,7 @@ class TestClear(unittest.TestCase):
     def perform_test_from_key(self, key: str):
         tests = self.tests[key]
         for t in tests:
-            self.perform_test(t["command"], path.join(tests_dir, t["input"]), path.join(tests_dir, t["expected"]))
+            self.perform_test(t["command"], path.join(test_files_dir, t["input"]), path.join(test_files_dir, t["expected"]))
 
     def test_clear_lines_containing_word(self):
         func_name = inspect.stack()[0].function

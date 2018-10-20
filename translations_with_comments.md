@@ -32,7 +32,8 @@ print("Translated command:", command)
 ### Basic word functions
 
 * delete $USER_TEXT_INPUT
-  1. `sed 's/{1}//g' {0}`
+  1. ~~`sed 's/{1}//g' {0}`~~
+  2. `perl -wnl -e 's/{1}//g; print;' {0}`
 
 * replace $USER_TEXT_INPUT with $USER_TEXT_INPUT
   1. `sed 's/%{1}/%{2}/' {0}`

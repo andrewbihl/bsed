@@ -1,7 +1,9 @@
 from os import path
 
-ROOT_DIR = path.dirname(path.abspath(__file__))
-CONFIG_DIR = path.join(ROOT_DIR, 'config')
+SOURCE_ROOT = path.dirname(path.abspath(__file__))
+PROJECT_ROOT = path.dirname(SOURCE_ROOT)
+TESTS_DIR = path.join(PROJECT_ROOT, 'tests')
+CONFIG_DIR = path.join(SOURCE_ROOT, 'config')
 # COMMAND_TRANSLATIONS_FILE = path.join(CONFIG_DIR, 'command_translations.json')
 COMMAND_TRANSLATIONS_FILE = path.join(CONFIG_DIR, 'command_perl_translations.json')
 COMMAND_TOKEN_TREE = path.join(CONFIG_DIR, 'command_token_tree.json')
