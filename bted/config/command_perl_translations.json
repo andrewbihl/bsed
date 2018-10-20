@@ -24,5 +24,6 @@
   "wrap lines ending with $USER_TEXT_INPUT with $USER_TEXT_INPUT": "perl -pe 's/.*{1}$/{2}$&{2}/' {0}",
   "select lines containing $USER_TEXT_INPUT": "perl -wln -e '/{1}/ and print;' {0}",
   "select lines starting with $USER_TEXT_INPUT": "perl -wln -e '/^{1}/ and print;' {0}",
-  "select lines ending with $USER_TEXT_INPUT": "perl -wln -e '/{1}$/ and print;' {0}"
+  "select lines ending with $USER_TEXT_INPUT": "perl -wln -e '/{1}$/ and print;' {0}",
+  "select lines $USER_INTEGER_INPUT to $USER_INTEGER_INPUT": "echo Not Implemented."
 }

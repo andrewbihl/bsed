@@ -47,6 +47,11 @@
 
     "line-types": {
       "lines": {
+        "$USER_INTEGER_INPUT": {
+          "to": {
+            "$USER_INTEGER_INPUT": {}
+          }
+        },
         "starting": {
           "with": {
             "$USER_TEXT_INPUT": {}

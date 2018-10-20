@@ -8,6 +8,7 @@ class Keyword(Enum):
     REUSABLE_COMPONENTS = 'reusable_components'
     ROOT = 'root'
     USER_TEXT = '$USER_TEXT_INPUT'
+    USER_INTEGER = '$USER_INTEGER_INPUT'
 
 
 class TokenNode:
@@ -34,9 +35,11 @@ class TokenNode:
         :return: The node for the next word, and True if the node returns is a USER_INPUT_TEXT node
         """
         if arg_text in self.children.keys():
-            return self.children[arg_text], False
+            return self.children[arg_text], 0
         if Keyword.USER_TEXT.value in self.children.keys():
-            return self.children[Keyword.USER_TEXT.value], True
+            return self.children[Keyword.USER_TEXT.value], 1
+        if Keyword.USER_INTEGER.value in self.children.keys():
+            return self.children[Keyword.USER_INTEGER.value], 2
         return None, False
 
     def terminates_command(self):
@@ -66,9 +69,16 @@ class TokenTree:
             raise TypeError
 
         def step(node: TokenNode, text: str):
-            next_node, is_user_input_node = node.next_node(text.lower())
-            if is_user_input_node:
+            next_node, input_type = node.next_node(text.lower())
+            if input_type == 1:
                 return next_node, text
+            elif input_type == 2:
+                try:
+                    _ = int(text)
+                    return next_node, text
+                except TypeError:
+                    # Invalid input
+                    return None, None
             return next_node, None
 
         command_nodes = []

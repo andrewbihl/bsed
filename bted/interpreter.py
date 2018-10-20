@@ -90,7 +90,7 @@ def main():
         file_arg = sys.argv[-1]
         command_args = sys.argv[1:-1]
     else:
-        print('File not found. Reading from standard input.', file=sys.stderr)
+        # print('File not found. Reading from standard input.', file=sys.stderr)
         command_args = sys.argv[1:]
 
     interpreter = default_interpreter()
