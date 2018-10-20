@@ -1,6 +1,6 @@
 import json
 import logging
-from enum import Enum
+from enum import Enum, IntEnum
 import bted.definitions as definitions
 
 
@@ -9,6 +9,16 @@ class Keyword(Enum):
     ROOT = 'root'
     USER_TEXT = '$USER_TEXT_INPUT'
     USER_INTEGER = '$USER_INTEGER_INPUT'
+    USER_LINE_START_INDEX = '$USER_LINE_START_INDEX'  # int which must be shifted +1 for 0-indexing.
+    USER_LINE_END_INDEX = '$USER_LINE_END_INDEX'  # int which must be compared to start for validity (>= start)
+
+
+class InputType(IntEnum):
+    COMMAND = 0
+    USER_TEXT = 1
+    USER_INTEGER = 2
+    USER_LINE_START_INDEX = 3
+    USER_LINE_END_INDEX = 4
 
 
 class TokenNode:
@@ -35,11 +45,15 @@ class TokenNode:
         :return: The node for the next word, and True if the node returns is a USER_INPUT_TEXT node
         """
         if arg_text in self.children.keys():
-            return self.children[arg_text], 0
+            return self.children[arg_text], InputType.COMMAND
         if Keyword.USER_TEXT.value in self.children.keys():
-            return self.children[Keyword.USER_TEXT.value], 1
+            return self.children[Keyword.USER_TEXT.value], InputType.USER_TEXT
         if Keyword.USER_INTEGER.value in self.children.keys():
-            return self.children[Keyword.USER_INTEGER.value], 2
+            return self.children[Keyword.USER_INTEGER.value], InputType.USER_INTEGER
+        if Keyword.USER_LINE_START_INDEX.value in self.children.keys():
+            return self.children[Keyword.USER_LINE_START_INDEX.value], InputType.USER_LINE_START_INDEX
+        if Keyword.USER_LINE_END_INDEX.value in self.children.keys():
+            return self.children[Keyword.USER_LINE_END_INDEX.value], InputType.USER_LINE_END_INDEX
         return None, False
 
     def terminates_command(self):
@@ -52,6 +66,7 @@ class TokenTree:
         self.command_tree = command_tree
         self.command_translations = translations
         self.root = self.enumerate_node_dict(self.command_tree['root'], '')
+        self.line_range_start = None
 
     @staticmethod
     def normalized_command_string(command_nodes: [TokenNode]):
@@ -70,14 +85,39 @@ class TokenTree:
 
         def step(node: TokenNode, text: str):
             next_node, input_type = node.next_node(text.lower())
-            if input_type == 1:
+            if input_type == InputType.USER_TEXT.value:
                 return next_node, text
-            elif input_type == 2:
+            elif input_type == InputType.USER_INTEGER.value:
                 try:
                     _ = int(text)
                     return next_node, text
                 except TypeError:
                     # Invalid input
+                    return None, None
+            elif input_type == InputType.USER_LINE_START_INDEX.value:
+                try:
+                    index = int(text)
+                    index += 1
+                    if index < 0:
+                        # Invalid range
+                        return None, None
+                    self.line_range_start = index
+                    return next_node, str(index)
+                except TypeError:
+                    # Not an integer
+                    return None, None
+            elif input_type == InputType.USER_LINE_END_INDEX.value:
+                try:
+                    index = int(text)
+                    if index < self.line_range_start:
+                        # Invalid range
+                        return None, None
+                    return next_node, str(index)
+                except TypeError:
+                    # Not an integer
+                    return None, None
+                except AttributeError:
+                    # No start index already stored
                     return None, None
             return next_node, None
 

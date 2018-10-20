@@ -47,9 +47,9 @@
 
     "line-types": {
       "lines": {
-        "$USER_INTEGER_INPUT": {
+        "$USER_LINE_START_INDEX": {
           "to": {
-            "$USER_INTEGER_INPUT": {}
+            "$USER_LINE_END_INDEX": {}
           }
         },
         "starting": {

@@ -25,5 +25,5 @@
   "select lines containing $USER_TEXT_INPUT": "perl -wln -e '/{1}/ and print;' {0}",
   "select lines starting with $USER_TEXT_INPUT": "perl -wln -e '/^{1}/ and print;' {0}",
   "select lines ending with $USER_TEXT_INPUT": "perl -wln -e '/{1}$/ and print;' {0}",
-  "select lines $USER_INTEGER_INPUT to $USER_INTEGER_INPUT": "echo Not Implemented."
+  "select lines $USER_LINE_START_INDEX to $USER_LINE_END_INDEX": "perl -ne '{1}..{2} and print' {0}"
 }
