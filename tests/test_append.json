@@ -26,5 +26,12 @@
       "expected": "hello-world_append_lines_ending_with_ANDREW BIHL.txt",
       "command": ["append", "lines", "ending", "with", "hello", "with", "ANDREW BIHL"]
     }
+  ],
+  "test_append_lines_m_to_n_with_word": [
+    {
+      "input": "hello-world.txt",
+      "expected": "hello-world_append_lines_0_to_5_with_ANDREW BIHL.txt",
+      "command": ["append", "lines", "0", "to", "5", "with", "ANDREW BIHL"]
+    }
   ]
 }

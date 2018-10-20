@@ -26,5 +26,12 @@
       "expected": "hello-world_replace_lines_ending_with_hello_with_phrase.txt",
       "command": ["replace", "lines", "ending", "with", "hello", "with", "This is a sentence"]
     }
+  ],
+  "test_replace_lines_m_to_n_with_word": [
+    {
+      "input": "hello-world.txt",
+      "expected": "hello-world_replace_lines_2_to_4_with_ANDREW BIHL.txt",
+      "command": ["select", "lines", "2", "to", "4", "ANDREW BIHL"]
+    }
   ]
 }

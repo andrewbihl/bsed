@@ -26,5 +26,12 @@
       "expected": "hello-world_wrap_lines_ending_with_hello_with_ANDREW BIHL.txt",
       "command": ["wrap", "lines", "ending", "with", "hello", "with", "ANDREW BIHL"]
     }
+  ],
+  "test_wrap_lines_m_to_n_with_word": [
+    {
+      "input": "hello-world.txt",
+      "expected": "hello-world_wrap_lines_10_to_1000_with_ANDREW BIHL.txt",
+      "command": ["wrap", "lines", "10", "to", "1000", "with", "ANDREW BIHL"]
+    }
   ]
 }

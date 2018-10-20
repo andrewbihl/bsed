@@ -26,5 +26,12 @@
       "expected": "hello-world_delete_lines_ending_with_hello.txt",
       "command": ["delete", "lines", "ending", "with", "hello"]
     }
+  ],
+  "test_delete_lines_m_to_n": [
+    {
+      "input": "hello-world.txt",
+      "expected": "hello-world_delete_lines_3_to_7.txt",
+      "command": ["delete", "lines", "3", "to", "7"]
+    }
   ]
 }

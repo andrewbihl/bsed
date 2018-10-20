@@ -3,7 +3,7 @@
   {
     "append":
     {
-      "reusable_components": ["text-with-text", "lines-relation-text-with-text"]
+      "reusable_components": ["text-with-text", "line-types-with-text"]
     },
     "clear":
     {
@@ -16,19 +16,19 @@
     },
     "insert":
     {
-      "reusable_components": ["text-with-text", "lines-relation-text-with-text"]
+      "reusable_components": ["text-with-text", "line-types-with-text"]
     },
     "prepend":
     {
-      "reusable_components": ["text-with-text", "lines-relation-text-with-text"]
+      "reusable_components": ["text-with-text", "line-types-with-text"]
     },
     "replace":
     {
-      "reusable_components": ["text-with-text", "lines-relation-text-with-text"]
+      "reusable_components": ["text-with-text", "line-types-with-text"]
     },
     "wrap":
     {
-      "reusable_components": ["text-with-text", "lines-relation-text-with-text"]
+      "reusable_components": ["text-with-text", "line-types-with-text"]
     },
     "select":
     {
@@ -67,9 +67,17 @@
         }
       }
     },
-
-    "lines-relation-text-with-text": {
+    "line-types-with-text": {
       "lines": {
+        "$USER_LINE_START_INDEX": {
+          "to": {
+            "$USER_LINE_END_INDEX": {
+              "with": {
+                "$USER_TEXT_INPUT": {}
+              }
+            }
+          }
+        },
         "starting": {
           "with": {
             "reusable_components" : ["text-with-text"]
