@@ -54,7 +54,7 @@ class Interpreter:
                 except OSError as e:
                     print("Execution failed:", e, file=sys.stderr)
                 if return_output:
-                    res = p.stdout
+                    res = bytes.decode(p.stdout.read())
         return res
 
 
