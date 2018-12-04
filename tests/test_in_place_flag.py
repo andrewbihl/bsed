@@ -36,6 +36,7 @@ class TestInPlaceFlag(unittest.TestCase):
         self.assertEqual(expected, res)
 
     def test_all(self):
+        print()
         for test_file in self.test_files:
             print(path.split(test_file)[-1])
             with open(test_file, 'r') as fin:
