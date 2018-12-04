@@ -31,7 +31,7 @@
     {
       "input": "hello-world.txt",
       "expected": "hello-world_prepend_lines_5_to_12_with_ANDREW BIHL.txt",
-      "command": ["select", "lines", "5", "to", "12", "with", "ANDREW BIHL"]
+      "command": ["prepend", "lines", "5", "to", "12", "with", "ANDREW BIHL"]
     }
   ]
 }

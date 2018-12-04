@@ -1,8 +1,8 @@
-ANDREW BIHLhello
-ANDREW BIHLHello
-ANDREW BIHLworld
-ANDREW BIHLWorld
-ANDREW BIHLhello world
+helloANDREW BIHL
+HelloANDREW BIHL
+worldANDREW BIHL
+WorldANDREW BIHL
+hello worldANDREW BIHL
 hello World
 Hello world
 Hello World

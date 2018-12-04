@@ -31,7 +31,7 @@
     {
       "input": "hello-world.txt",
       "expected": "hello-world_replace_lines_2_to_4_with_ANDREW BIHL.txt",
-      "command": ["select", "lines", "2", "to", "4", "ANDREW BIHL"]
+      "command": ["replace", "lines", "2", "to", "4", "with", "ANDREW BIHL"]
     }
   ]
 }
