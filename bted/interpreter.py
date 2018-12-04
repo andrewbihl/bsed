@@ -7,7 +7,7 @@ from .arg_process import process_args
 
 
 class Interpreter:
-    accepted_flags = {'-t'}
+    accepted_flags = {'-i', '-t'}
 
     def __init__(self, command_tree_file, translations_file):
         self.tree = TokenTree.from_json(command_tree_file, translations_file)
@@ -38,6 +38,10 @@ class Interpreter:
     def execute_command(cls, cmd, flags, return_output=False, stdin=sys.stdin):
         res = None
         translation_only = '-t' in flags
+        in_place = '-i' in flags
+        if in_place:
+            parts = cmd.split()
+            cmd = ' '.join(parts[:-1] + ['-i'] + [parts[-1]])
         if translation_only:
             print('Translation:\n >', cmd)
         else:

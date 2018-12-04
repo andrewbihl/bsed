@@ -7,7 +7,6 @@ from .context import bted
 import bted.definitions as definitions
 from bted import interpreter
 
-test_files_dir = path.join(definitions.TESTS_DIR, 'test_files')
 wrap_tests = path.join(definitions.TESTS_DIR, 'test_wrap.json')
 
 
@@ -30,7 +29,7 @@ class TestWrap(unittest.TestCase):
     def perform_test_from_key(self, key: str):
         tests = self.tests[key]
         for t in tests:
-            self.perform_test(t["command"], path.join(test_files_dir, t["input"]), path.join(test_files_dir, t["expected"]))
+            self.perform_test(t["command"], path.join(definitions.TEST_FILES_DIR, t["input"]), path.join(definitions.TEST_FILES_DIR, t["expected"]))
 
     def test_wrap_word(self):
         func_name = inspect.stack()[0].function
