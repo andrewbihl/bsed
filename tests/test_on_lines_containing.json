@@ -1,0 +1,37 @@
+{
+  "test_on_lines_prepend": [
+    {
+      "input": "hello-world.txt",
+      "expected": "hello-world_on_lines_containing_Hello_prepend_World_with_My.txt",
+      "command": ["on", "lines", "containing", "Hello", "prepend", "World", "with", "My"]
+    }
+  ],
+  "test_on_lines_delete": [
+    {
+      "input": "hello-world.txt",
+      "expected": "hello-world_on_lines_containing_hello_delete_world.txt",
+      "command": ["on", "lines", "containing", "hello", "delete", "world"]
+    }
+  ],
+  "test_on_lines_replace": [
+    {
+      "input": "hello-world.txt",
+      "expected": "hello-world_on_lines_containing_Hello_replace_world_with_World.txt",
+      "command": ["on", "lines", "containing", "Hello", "replace", "world", "with", "World"]
+    }
+  ],
+  "test_on_lines_append": [
+    {
+      "input": "hello-world.txt",
+      "expected": "hello-world_on_lines_containing_hello_append_world_with_s.txt",
+      "command": ["on", "lines", "containing", "hello", "append", "world", "with", "s"]
+    }
+    ],
+  "test_on_lines_wrap": [
+    {
+      "input": "hello-world.txt",
+      "expected": "hello-world_on_lines_containing_world_wrap_hello_with_goodbye.txt",
+      "command": ["on", "lines", "containing", "world", "wrap", "hello", "with", "goodbye"]
+    }
+  ]
+}
