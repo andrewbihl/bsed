@@ -36,6 +36,8 @@ class Interpreter:
 
     @classmethod
     def execute_command(cls, cmd, flags, return_output=False, stdin=sys.stdin):
+        if cmd is None:
+            return None
         res = None
         translation_only = '-t' in flags
         in_place = '-i' in flags
