@@ -25,6 +25,8 @@ def extract_flags(cmd_args):
     for i in range(len(cmd_args)):
         arg = cmd_args[i]
         if arg == ['--']:
+            if i + 1 < len(cmd_args):
+                res += cmd_args[i+1]
             break
         if arg[0] == '-':
             flags.append(arg)
