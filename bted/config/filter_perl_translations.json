@@ -1,0 +1,6 @@
+{
+  "on lines containing $USER_TEXT_INPUT": "if /{0}/'",
+  "on lines starting with $USER_TEXT_INPUT": "if /^{0}/",
+  "on lines ending with $USER_TEXT_INPUT": "Not Implemented",
+  "on lines $USER_LINE_START_INDEX to $USER_LINE_END_INDEX": "Not Implemented"
+}
