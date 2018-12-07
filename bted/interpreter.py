@@ -1,5 +1,5 @@
 import sys
-from os import system, path, popen
+from os import path
 import subprocess
 from .token_tree import TokenTree
 import bted.definitions as definitions
