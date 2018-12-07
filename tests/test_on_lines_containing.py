@@ -7,7 +7,7 @@ from .context import bted
 import bted.definitions as definitions
 from bted import interpreter
 
-append_tests = path.join(definitions.TESTS_DIR, 'test_on_lines_filter.json')
+append_tests = path.join(definitions.TESTS_DIR, 'test_on_lines_containing.json')
 
 
 class TestOnLinesContaining(unittest.TestCase):
