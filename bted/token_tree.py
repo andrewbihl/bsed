@@ -20,6 +20,18 @@ class InputType(IntEnum):
     USER_LINE_START_INDEX = 3
     USER_LINE_END_INDEX = 4
 
+    def is_integer(self):
+        return InputType.USER_INTEGER <= self <= InputType.USER_LINE_END_INDEX
+
+    def is_valid(self, text):
+        if self.is_integer():
+            try:
+                _ = int(text)
+            except TypeError:
+                # Not an integer
+                return False
+        return True
+
 
 class TokenNode:
     def __init__(self, text: str, children_nodes, depth: int):
@@ -54,7 +66,7 @@ class TokenNode:
             return self.children[Keyword.USER_LINE_START_INDEX.value], InputType.USER_LINE_START_INDEX
         if Keyword.USER_LINE_END_INDEX.value in self.children.keys():
             return self.children[Keyword.USER_LINE_END_INDEX.value], InputType.USER_LINE_END_INDEX
-        return None, False
+        return None, None
 
     def terminates_command(self):
         return len(self.children) == 0
@@ -85,40 +97,40 @@ class TokenTree:
 
         def step(node: TokenNode, text: str):
             next_node, input_type = node.next_node(text.lower())
+            if next_node is None:
+                return None, None
+            if not input_type.is_valid(text):
+                return None, None
+
             if input_type == InputType.USER_TEXT.value:
                 return next_node, text
-            elif input_type == InputType.USER_INTEGER.value:
-                try:
-                    _ = int(text)
+
+            int_val = None
+            if input_type.is_integer():
+                print(text)
+                int_val = int(text)
+
+            if input_type == InputType.USER_INTEGER.value:
                     return next_node, text
-                except TypeError:
-                    # Invalid input
+
+            if input_type == InputType.USER_LINE_START_INDEX.value:
+                index = int_val + 1
+                if index < 0:
+                    # Invalid range
                     return None, None
-            elif input_type == InputType.USER_LINE_START_INDEX.value:
-                try:
-                    index = int(text)
-                    index += 1
-                    if index < 0:
-                        # Invalid range
-                        return None, None
-                    self.line_range_start = index
-                    return next_node, str(index)
-                except TypeError:
-                    # Not an integer
-                    return None, None
-            elif input_type == InputType.USER_LINE_END_INDEX.value:
-                try:
-                    index = int(text)
-                    if index < self.line_range_start:
-                        # Invalid range
-                        return None, None
-                    return next_node, str(index)
-                except TypeError:
-                    # Not an integer
-                    return None, None
-                except AttributeError:
+                self.line_range_start = index
+                return next_node, str(index)
+
+            if input_type == InputType.USER_LINE_END_INDEX.value:
+                index = int_val
+                if self.line_range_start is None:
                     # No start index already stored
                     return None, None
+                if index < self.line_range_start:
+                    # Invalid range
+                    return None, None
+                return next_node, str(index)
+
             return next_node, None
 
         command_nodes = []
