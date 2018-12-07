@@ -1,0 +1,64 @@
+{
+  "root": {
+    "on": {
+      "reusable_components": ["line-types"]
+    }
+  },
+  "reusable_components": {
+    "text-with-text": {
+      "$USER_TEXT_INPUT": {
+        "with": {
+          "$USER_TEXT_INPUT": {}
+        }
+      }
+    },
+    "line-types": {
+      "lines": {
+        "$USER_LINE_START_INDEX": {
+          "to": {
+            "$USER_LINE_END_INDEX": {}
+          }
+        },
+        "starting": {
+          "with": {
+            "$USER_TEXT_INPUT": {}
+          }
+        },
+        "ending": {
+          "with": {
+            "$USER_TEXT_INPUT": {}
+          }
+        },
+        "containing": {
+          "$USER_TEXT_INPUT": {}
+        }
+      }
+    },
+    "line-types-with-text": {
+      "lines": {
+        "$USER_LINE_START_INDEX": {
+          "to": {
+            "$USER_LINE_END_INDEX": {
+              "with": {
+                "$USER_TEXT_INPUT": {}
+              }
+            }
+          }
+        },
+        "starting": {
+          "with": {
+            "reusable_components" : ["text-with-text"]
+          }
+        },
+        "ending": {
+          "with": {
+            "reusable_components": ["text-with-text"]
+          }
+        },
+        "containing": {
+          "reusable_components": ["text-with-text"]
+        }
+      }
+    }
+  }
+}

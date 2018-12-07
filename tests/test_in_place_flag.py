@@ -21,9 +21,7 @@ class TestInPlaceFlag(unittest.TestCase):
         self.test_files = [path.join(definitions.TESTS_DIR, f)
                            for f in os.listdir(definitions.TESTS_DIR)
                            if f.startswith('test_') and f.endswith('.json')]
-        command_tree_fp = definitions.COMMAND_TOKEN_TREE
-        translations_fp = definitions.COMMAND_TRANSLATIONS_FILE
-        self.interpreter = interpreter.Interpreter(command_tree_fp, translations_fp)
+        self.interpreter = interpreter.default_interpreter()
 
     def perform_test(self, command: [str], input_file: str, expected_result_file: str):
         expected = TestInPlaceFlag.__f_to_str(expected_result_file)

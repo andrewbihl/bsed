@@ -13,9 +13,7 @@ delete_tests = path.join(definitions.TESTS_DIR, 'test_delete.json')
 class TestDelete(unittest.TestCase):
 
     def setUp(self):
-        command_tree_fp = definitions.COMMAND_TOKEN_TREE
-        translations_fp = definitions.COMMAND_TRANSLATIONS_FILE
-        self.interpreter = interpreter.Interpreter(command_tree_fp, translations_fp)
+        self.interpreter = interpreter.default_interpreter()
         with open(delete_tests, 'r') as fin:
             self.tests = json.load(fin)
 

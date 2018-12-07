@@ -13,9 +13,7 @@ clear_tests = path.join(definitions.TESTS_DIR, 'test_clear.json')
 class TestClear(unittest.TestCase):
 
     def setUp(self):
-        command_tree_fp = definitions.COMMAND_TOKEN_TREE
-        translations_fp = definitions.COMMAND_TRANSLATIONS_FILE
-        self.interpreter = interpreter.Interpreter(command_tree_fp, translations_fp)
+        self.interpreter = interpreter.default_interpreter()
         with open(clear_tests, 'r') as fin:
             self.tests = json.load(fin)
 
