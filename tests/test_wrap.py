@@ -32,6 +32,10 @@ class TestWrap(unittest.TestCase):
         func_name = inspect.stack()[0].function
         self.perform_test_from_key(func_name)
 
+    def test_wrap_pattern(self):
+        func_name = inspect.stack()[0].function
+        self.perform_test_from_key(func_name)
+
     def test_wrap_lines_containing_word(self):
         func_name = inspect.stack()[0].function
         self.perform_test_from_key(func_name)

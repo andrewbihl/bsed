@@ -6,6 +6,13 @@
       "command": ["prepend", "hello", "with", "ANDREW BIHL"]
     }
   ],
+  "test_prepend_pattern": [
+    {
+      "input": "hello-world.txt",
+      "expected": "hello-world_prepend_{}orld_with_ANDREW.txt",
+      "command": ["prepend", ".orld", "with", "ANDREW"]
+    }
+  ],
   "test_prepend_lines_containing_word": [
     {
       "input": "hello-world.txt",

@@ -32,6 +32,10 @@ class TestPrepend(unittest.TestCase):
         func_name = inspect.stack()[0].function
         self.perform_test_from_key(func_name)
 
+    def test_prepend_pattern(self):
+        func_name = inspect.stack()[0].function
+        self.perform_test_from_key(func_name)
+
     def test_prepend_lines_containing_word(self):
         func_name = inspect.stack()[0].function
         self.perform_test_from_key(func_name)

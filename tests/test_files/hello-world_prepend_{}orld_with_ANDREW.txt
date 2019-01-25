@@ -1,0 +1,19 @@
+hello
+Hello
+ANDREWworld
+ANDREWWorld
+hello ANDREWworld
+hello ANDREWWorld
+Hello ANDREWworld
+Hello ANDREWWorld
+helloANDREWworld
+HelloANDREWWorld
+ANDREWworldhello
+ANDREWworld hello
+ANDREWworld Hello
+*
+-
+/
+\n
+\t
+

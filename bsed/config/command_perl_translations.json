@@ -1,9 +1,9 @@
 {
   "delete $USER_TEXT_INPUT": "perl -wnl -e \"s/{1}//g; print;\" {0}",
   "replace $USER_TEXT_INPUT with $USER_TEXT_INPUT": "perl -wnl -e \"s/{1}/{2}/g; print;\" {0}",
-  "append $USER_TEXT_INPUT with $USER_TEXT_INPUT": "perl -wnl -e \"s/{1}/{1}{2}/g; print;\" {0}",
-  "prepend $USER_TEXT_INPUT with $USER_TEXT_INPUT": "perl -wnl -e \"s/{1}/{2}{1}/g; print;\" {0}",
-  "wrap $USER_TEXT_INPUT with $USER_TEXT_INPUT": "perl -wnl -e \"s/{1}/{2}{1}{2}/g; print;\" {0}",
+  "append $USER_TEXT_INPUT with $USER_TEXT_INPUT": "perl -nl -e \"s/({1})/\\1{2}/g; print;\" {0}",
+  "prepend $USER_TEXT_INPUT with $USER_TEXT_INPUT": "perl -nl -e \"s/({1})/{2}\\1/g; print;\" {0}",
+  "wrap $USER_TEXT_INPUT with $USER_TEXT_INPUT": "perl -nl -e \"s/({1})/{2}\\1{2}/g; print;\" {0}",
   "delete lines containing $USER_TEXT_INPUT": "perl -ne \"/{1}/ or print\" {0}",
   "delete lines starting with $USER_TEXT_INPUT": "perl -ne \"/^{1}/ or print\" {0}",
   "delete lines ending with $USER_TEXT_INPUT": "perl -ne \"/{1}$/ or print\" {0}",

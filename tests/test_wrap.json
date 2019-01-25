@@ -6,6 +6,13 @@
       "command": ["wrap", "hello", "with", "ANDREW BIHL"]
     }
   ],
+  "test_wrap_pattern": [
+    {
+      "input": "hello-world.txt",
+      "expected": "hello-world_wrap_{}orld_with_ANDREW.txt",
+      "command": ["wrap", ".orld", "with", "ANDREW"]
+    }
+  ],
   "test_wrap_lines_containing_word": [
     {
       "input": "hello-world.txt",
