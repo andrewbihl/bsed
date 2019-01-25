@@ -4,9 +4,8 @@ from os import path
 import json
 from shutil import copy
 
-from .context import bted
-import bted.definitions as definitions
-from bted import interpreter
+import bsed.definitions as definitions
+from bsed import interpreter
 
 
 class TestInPlaceFlag(unittest.TestCase):

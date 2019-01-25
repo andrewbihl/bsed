@@ -4,14 +4,14 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="bted",
+    name="bsed",
     version="0.1.6",
     author="Andrew Bihl",
     author_email="andrewbihlva@gmail.com",
     description="A simple syntax for text editing.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/andrewbihl/bted",
+    url="https://github.com/andrewbihl/bsed",
     packages=setuptools.find_packages(exclude="tests"),
     classifiers=[
         "Programming Language :: Python :: 3",
@@ -20,8 +20,8 @@ setuptools.setup(
     ],
     entry_points={
         'console_scripts': [
-            'bted = bted.interpreter:main',
-            'bted-commands = bted.interpreter:print_commands'
+            'bsed = bsed.interpreter:main',
+            'bsed-commands = bsed.interpreter:print_commands'
         ]
     },
     include_package_data=True,

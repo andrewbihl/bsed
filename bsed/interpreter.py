@@ -2,7 +2,7 @@ import sys
 from os import path
 import subprocess
 from .token_tree import TokenTree
-import bted.definitions as definitions
+import bsed.definitions as definitions
 from .arg_process import process_args
 
 
@@ -76,11 +76,11 @@ def print_commands():
 
 def main():
     if len(sys.argv) < 2:
-        print('Insufficient arguments. Format: \'bted <input-file> <command statement>\'\n'
+        print('Insufficient arguments. Format: \'bsed <input-file> <command statement>\'\n'
               'Examples: \n'
-              '> bted example.txt delete lines starting with "example Phrase"\n'
-              '> bted example.txt select lines containing Andrew\n'
-              '> bted example.txt prepend beat with "Don\'t stop the "', file=sys.stderr)
+              '> bsed example.txt delete lines starting with "example Phrase"\n'
+              '> bsed example.txt select lines containing Andrew\n'
+              '> bsed example.txt prepend beat with "Don\'t stop the "', file=sys.stderr)
         exit(1)
 
     # std_in = None
