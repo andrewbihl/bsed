@@ -5,10 +5,10 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="bsed",
-    version="0.1.6",
+    version="0.1.7",
     author="Andrew Bihl",
     author_email="andrewbihlva@gmail.com",
-    description="A simple syntax for text editing.",
+    description="Simple english syntax for stream editing.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/andrewbihl/bsed",
