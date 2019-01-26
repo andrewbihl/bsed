@@ -79,6 +79,7 @@ class TokenTree:
         self.command_translations = translations
         self.root = self.build_node_from_dict(self.command_tree['root'], '')
         self.line_range_start = None
+        self.subtrees = {}  # maps translation_file -> TokenTree
 
     @staticmethod
     def normalized_command_string(command_nodes: [TokenNode]):
@@ -97,7 +98,10 @@ class TokenTree:
 
         def step(node: TokenNode, text: str):
             next_node, input_type = node.next_node(text.lower())
+            # Did not match next-node text options
             if next_node is None:
+                if node.
+
                 return None, None
             if not input_type.is_valid(text):
                 return None, None

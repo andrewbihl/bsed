@@ -1,0 +1,25 @@
+{
+  "line-types": {
+    "lines": {
+      "$USER_LINE_START_INDEX": {
+        "to": {
+          "$USER_LINE_END_INDEX": {}
+        }
+      },
+      "starting": {
+        "with": {
+          "$USER_TEXT_INPUT": {}
+        }
+      },
+      "ending": {
+        "with": {
+          "$USER_TEXT_INPUT": {}
+        }
+      },
+      "containing": {
+        "$USER_TEXT_INPUT": {}
+      }
+    }
+  }
+}
+

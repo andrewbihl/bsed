@@ -1,42 +1,64 @@
 {
   "root":
   {
-    "append":
-    {
-      "reusable_components": ["text-with-text", "line-types-with-text"]
+    "append": {
+      "reusable_components": {
+        "text-with-text": {},
+        "line-types-with-text": {}
+      }
     },
-    "clear":
-    {
-      "reusable_components": ["line-types"]
+    "clear": {
+      "reusable_components": {
+        "line-types": {}
+      }
     },
-    "delete":
-    {
+    "delete": {
       "$USER_TEXT_INPUT": {},
-      "reusable_components": ["line-types"]
+      "reusable_components": {
+        "line-types": {}
+      }
     },
-    "insert":
-    {
-      "reusable_components": ["text-with-text", "line-types-with-text"]
+    "insert": {
+      "reusable_components": {
+        "text-with-text": {},
+        "line-types-with-text": {}
+      }
     },
-    "prepend":
-    {
-      "reusable_components": ["text-with-text", "line-types-with-text"]
+    "prepend": {
+      "reusable_components": {
+        "text-with-text": {},
+        "line-types-with-text": {}
+      }
     },
-    "replace":
-    {
-      "reusable_components": ["text-with-text", "line-types-with-text"]
+    "replace": {
+      "reusable_components": {
+        "text-with-text": {},
+        "line-types-with-text":{}
+      }
     },
-    "wrap":
-    {
-      "reusable_components": ["text-with-text", "line-types-with-text"]
+    "wrap": {
+      "reusable_components": {
+        "text-with-text": {},
+        "line-types-with-text": {}
+      }
     },
-    "select":
-    {
-      "reusable_components": ["line-types"]
+    "select": {
+      "reusable_components": {
+        "line-types": {}
+      }
+    },
+    "on": {
+      "reusable_components": {
+        "line-types": {
+          "reusable_components": {
+            "word-operations": {}
+          }
+        }
+      }
     }
   },
-  "reusable_components": {
 
+  "reusable_components": {
     "text-with-text": {
       "$USER_TEXT_INPUT": {
         "with": {
@@ -44,7 +66,6 @@
         }
       }
     },
-
     "line-types": {
       "lines": {
         "$USER_LINE_START_INDEX": {
@@ -80,16 +101,47 @@
         },
         "starting": {
           "with": {
-            "reusable_components" : ["text-with-text"]
+            "reusable_components" : {
+              "text-with-text": {}
+            }
           }
         },
         "ending": {
           "with": {
-            "reusable_components": ["text-with-text"]
+            "reusable_components": {
+              "text-with-text": {}
+            }
           }
         },
         "containing": {
-          "reusable_components": ["text-with-text"]
+          "reusable_components": {
+            "text-with-text": {}
+          }
+        }
+      }
+    },
+    "word-operations": {
+      "append": {
+        "reusable_components": {
+          "text-with-text": {}
+        }
+      },
+      "delete": {
+        "$USER_TEXT_INPUT": {}
+      },
+      "prepend": {
+        "reusable_components": {
+          "text-with-text": {}
+        }
+      },
+      "replace": {
+        "reusable_components": {
+          "text-with-text": {}
+        }
+      },
+      "wrap": {
+        "reusable_components": {
+          "text-with-text": {}
         }
       }
     }

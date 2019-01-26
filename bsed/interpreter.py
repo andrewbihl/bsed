@@ -17,7 +17,7 @@ class Interpreter:
         for k in self.tree.command_translations:
             print(' >', k, file=sys.stderr)
 
-    def build_command(self, command_args, file_arg) -> (str, [str]):
+    def build_command(self, command_args, file_arg, line_filter="true") -> (str, [str]):
         if file_arg is None:
             file_arg = ''
         cmd_statement, flags = process_args(command_args)
