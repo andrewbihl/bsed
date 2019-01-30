@@ -124,31 +124,6 @@ class TokenNode:
     def longest_child(self):
         return 0 if len(self.children) == 0 else max(c.depth for c in self.children.values())
 
-    def next_node(self, arg_text):
-        """
-        Gets the next node for interpreting the command, if there is one.
-        :param arg_text: The text of the next component of the command statement
-        :return: The node for the next word, and the InputType of the next word
-        """
-        if arg_text in self.children.keys():
-            return self.children[arg_text], InputType.COMMAND
-        for input_kw, input_type in [(Keyword.USER_TEXT, InputType.USER_TEXT),
-                                     (Keyword.USER_INTEGER, InputType.USER_INTEGER),
-                                     (Keyword.USER_LINE_START_INDEX, InputType.USER_LINE_START_INDEX),
-                                     (Keyword.USER_LINE_END_INDEX, InputType.USER_LINE_END_INDEX)]:
-            if input_kw.value in self.children.keys():
-                if input_type.is_valid(arg_text):
-                    return self.children[input_kw.value], input_type
-        # if Keyword.USER_TEXT.value in self.children.keys():
-        #     return self.children[Keyword.USER_TEXT.value], InputType.USER_TEXT
-        # if Keyword.USER_INTEGER.value in self.children.keys():
-        #     return self.children[Keyword.USER_INTEGER.value], InputType.USER_INTEGER
-        # if Keyword.USER_LINE_START_INDEX.value in self.children.keys():
-        #     return self.children[Keyword.USER_LINE_START_INDEX.value], InputType.USER_LINE_START_INDEX
-        # if Keyword.USER_LINE_END_INDEX.value in self.children.keys():
-        #     return self.children[Keyword.USER_LINE_END_INDEX.value], InputType.USER_LINE_END_INDEX
-        return None, None
-
     def terminates_command(self):
         next_nodes = [n for n in self.children.values() if isinstance(n, TokenNode)]
         return len(next_nodes) == 0
@@ -159,11 +134,7 @@ token_trees = {}
 
 class TokenTree:
     def __init__(self, command_tree_spec: dict, root_key):
-        # translations_file = path.join(translations_dir, command_tree_spec[root_key][Keyword.TRANSLATIONS_FILE.value])
-        # with open(translations_file, 'r') as fin:
-        #     self.command_translations = json.load(fin)
         self.command_tree_dict = command_tree_spec
-        # self.translations_dir = translations_dir
         self.root = self.build_node_from_dict(self.command_tree_dict[root_key], '')
         self.line_range_start = None
         self.translation_file = self.command_tree_dict[root_key][Keyword.TRANSLATIONS_FILE.value]
@@ -176,68 +147,6 @@ class TokenTree:
 
     def print_command_tree(self):
         print(self.root)
-
-    def validate_command(self, command_statement: [str], tree_identifier=Keyword.ROOT_TREE.value):
-        user_text_inputs = []
-        if isinstance(command_statement, str):
-            command_statement = command_statement.split()
-        if not isinstance(command_statement, list):
-            raise TypeError
-
-        def step(node: TokenNode, text: str):
-            next_node, input_type = node.next_node(text.lower())
-            if next_node is None:
-                return None, None
-            if not input_type.is_valid(text):
-                return None, None
-            if input_type == InputType.USER_TEXT.value:
-                return next_node, text
-            int_val = None
-            if input_type.is_integer():
-                print(text)
-                int_val = int(text)
-            if input_type == InputType.USER_INTEGER.value:
-                return next_node, text
-            if input_type == InputType.USER_LINE_START_INDEX.value:
-                index = int_val + 1
-                if index < 0:
-                    # Invalid range
-                    return None, None
-                self.line_range_start = index
-                return next_node, str(index)
-            if input_type == InputType.USER_LINE_END_INDEX.value:
-                index = int_val
-                if self.line_range_start is None:
-                    # No start index already stored
-                    return None, None
-                if index < self.line_range_start:
-                    # Invalid range
-                    return None, None
-                return next_node, str(index)
-            return next_node, None
-
-        command_nodes = []
-        curr_node = token_trees[tree_identifier].root
-        for i, command_word in enumerate(command_statement):
-            sub_expression_keys = [k for k in curr_node.children if k.startswith(Keyword.EXPR_PREFIX.value)]
-            curr_node, user_input_word = step(curr_node, command_word)
-            if curr_node is None:
-                if len(sub_expression_keys) == 0:
-                    return None, None
-                results = [self.validate_command(command_statement[i:], tree_identifier=Keyword.expr_key_to_identifier(k))
-                           for k in sub_expression_keys]
-            command_nodes.append(curr_node)
-            if user_input_word is not None:
-                user_text_inputs.append(user_input_word)
-
-        valid_command = command_nodes[-1].terminates_command()
-        if valid_command:
-            normalized_cmd = TokenTree.normalized_command_string(command_nodes)
-            if normalized_cmd in self.command_translations:
-                return self.command_translations[normalized_cmd], user_text_inputs
-            else:
-                logging.error('Not yet implemented command of form: \"%s\"' % normalized_cmd)
-        return None, None
 
     @staticmethod
     def _update_leaves_of_dict(d: dict, addition: dict):
@@ -343,50 +252,6 @@ class Parser:
             cmd_words = cmd_words + remaining_cmd_words
             input_vars.update(remaining_inputs)
         return cmd_words, input_vars
-
-    def parse_expression_old(self, command_statement: [str], prev_node: TokenNode) -> (str, dict):
-        input_vars = {}
-
-        # subexpression_results = {kw: parse_command(command_statement, trees, translator, kw[len(Keyword.EXPR_PREFIX.value):])
-        #                          for kw in prev_node.children if kw.startswith(Keyword.EXPR_PREFIX.value)}
-        # successful_nested_results = {k: subexpression_results[k] for k in subexpression_results
-        #                              if subexpression_results[k][0] is not None}
-        # assert not len(successful_nested_results) > 1
-        # valid_sub_expression = len(successful_nested_results) != 0
-        # if valid_sub_expression:
-        #     sub_expression, inputs = successful_nested_results.pop([k for k in successful_nested_results][0])
-        #     sub_expression = translator.translate(sub_expression, inputs, '')
-        #     pass
-        arg = command_statement[0]
-        node, input_type = prev_node.next_node(arg)
-        if node is None:
-            for k in prev_node.children:
-                nested_expression_tree = Keyword.expr_key_to_identifier(k)
-                if nested_expression_tree is None:
-                    continue
-                sub_expression, words_consumed = self.translate_expression(command_statement, tree_identifier=nested_expression_tree)
-                if sub_expression is None:
-                    continue
-                expr_var = self.trees[nested_expression_tree].var_name
-                input_vars[expr_var] = sub_expression
-
-                # TODO: CONNECT PRE-EXPR to POST-EXPR nodes
-
-                pass
-            return
-        arg = input_type.validated_and_formatted(arg)
-        is_user_input = input_type != InputType.COMMAND
-        if is_user_input:
-            var_name = node.var_name
-            input_vars[var_name] = arg
-            arg = input_type.token_str()
-        if node.terminates_command():
-            return [arg], input_vars
-        sub_res_str, sub_res_vars = self.parse_expression(command_statement[1:], prev_node=node)
-        input_vars.update(sub_res_vars)
-        parsed_cmd_words = [arg] + sub_res_str
-        return parsed_cmd_words, input_vars
-
 
     def translate_expression(self, command_statement, tree_identifier=Keyword.ROOT_TREE.value, extra_args=None) -> (str, int):
         if isinstance(command_statement, str):
