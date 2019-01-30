@@ -1,0 +1,37 @@
+{
+  "test_on_lines_delete": [
+    {
+      "input": "hello-world.txt",
+      "expected": "hello-world_on_lines_starting_with_h_or_H_delete_o.txt",
+      "command": ["on", "lines", "starting", "with", "(h|H)", "delete", "o"]
+    }
+  ],
+  "test_on_lines_replace": [
+    {
+      "input": "hello-world.txt",
+      "expected": "hello-world_on_lines_starting_with_hello_replace_o_with_().txt",
+      "command": ["on", "lines", "starting", "with", "hello", "replace", "o", "with", "()"]
+    }
+  ],
+  "test_on_lines_prepend": [
+    {
+      "input": "hello-world.txt",
+      "expected": "hello-world_on_lines_starting_with_Hello_prepend_world_with_O.txt",
+      "command": ["on", "lines", "starting", "with", "Hello", "prepend", "world", "with", "O"]
+    }
+  ],
+  "test_on_lines_append": [
+    {
+      "input": "hello-world.txt",
+      "expected": "hello-world_on_lines_starting_with_Hello_append_l_with_l.txt",
+      "command": ["on", "lines", "starting", "with", "Hello", "append", "l", "with", "l"]
+    }
+  ],
+  "test_on_lines_wrap": [
+    {
+      "input": "hello-world.txt",
+      "expected": "hello-world_on_lines_starting_with_w_wrap_o_with_!.txt",
+      "command": ["on", "lines", "starting", "with", "w", "wrap", "o", "with", "!"]
+    }
+  ]
+}

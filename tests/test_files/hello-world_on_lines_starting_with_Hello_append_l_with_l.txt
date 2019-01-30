@@ -1,0 +1,19 @@
+hello
+Hellllo
+world
+World
+hello world
+hello World
+Hellllo worlld
+Hellllo Worlld
+helloworld
+HelllloWorlld
+worldhello
+world hello
+world Hello
+*
+-
+/
+\n
+\t
+

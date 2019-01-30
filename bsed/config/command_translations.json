@@ -1,15 +1,22 @@
 {
-  "delete $USER_TEXT_INPUT": "perl -wnl -e \"s/{1}//g if {line_filter}; print;\" {file}",
-  "replace $USER_TEXT_INPUT with $USER_TEXT_INPUT": "perl -nl -e \"s/{1}/{2}/g if {line_filter}; print;\" {file}",
-  "append $USER_TEXT_INPUT with $USER_TEXT_INPUT": "perl -nl -e \"s/({1})/\\1{2}/g if {line_filter}; print;\" {file}",
-  "prepend $USER_TEXT_INPUT with $USER_TEXT_INPUT": "perl -nl -e \"s/({1})/{2}\\1/g if {line_filter}; print;\" {file}",
-  "wrap $USER_TEXT_INPUT with $USER_TEXT_INPUT": "perl -nl -e \"s/({1})/{2}\\1{2}/g if {line_filter}; print;\" {file}",
+  "delete $USER_TEXT_INPUT": "perl -wnl -e \"s/{search_pattern}//g; print;\" {file}",
+  "replace $USER_TEXT_INPUT with $USER_TEXT_INPUT": "perl -nl -e \"s/{search_pattern}/{insert_text}/g; print;\" {file}",
+  "append $USER_TEXT_INPUT with $USER_TEXT_INPUT": "perl -nl -e \"s/({search_pattern})/\\1{insert_text}/g; print;\" {file}",
+  "prepend $USER_TEXT_INPUT with $USER_TEXT_INPUT": "perl -nl -e \"s/({search_pattern})/{insert_text}\\1/g; print;\" {file}",
+  "wrap $USER_TEXT_INPUT with $USER_TEXT_INPUT": "perl -nl -e \"s/({search_pattern})/{insert_text}\\1{insert_text}/g; print;\" {file}",
 
-  "select ${line_filter}": "perl -ne \"print if {line_filter}\" {file}",
-  "delete ${line_filter}": "perl -ne \"print if not {line_filter}\" {file}",
-  "clear ${line_filter}": "perl -ne \"s/.*//g if {line_filter}; print;\" {file}",
-  "replace ${line_filter} with $USER_TEXT_INPUT": "perl -ne \"s/.*/{2}/g if {line_filter}; print;\" {file}",
-  "append ${line_filter} with $USER_TEXT_INPUT": "perl -pe \"s/$/{2}/ if {line_filter}\" {file}",
-  "prepend ${line_filter} with $USER_TEXT_INPUT": "perl -pe \"s/^/{2}/ if {line_filter}\" {file}",
-  "wrap ${line_filter} with $USER_TEXT_INPUT": "perl -pe \"s/.*/{2}$&{2}/ if {line_filter}\" {file}"
+  "on {line_filter} delete $USER_TEXT_INPUT": "perl -wnl -e \"s/{search_pattern}//g if {line_filter}; print;\" {file}",
+  "on {line_filter} replace $USER_TEXT_INPUT with $USER_TEXT_INPUT": "perl -nl -e \"s/{search_pattern}/{insert_text}/g if {line_filter}; print;\" {file}",
+  "on {line_filter} append $USER_TEXT_INPUT with $USER_TEXT_INPUT": "perl -nl -e \"s/({search_pattern})/\\1{insert_text}/g if {line_filter}; print;\" {file}",
+  "on {line_filter} prepend $USER_TEXT_INPUT with $USER_TEXT_INPUT": "perl -nl -e \"s/({search_pattern})/{insert_text}\\1/g if {line_filter}; print;\" {file}",
+  "on {line_filter} wrap $USER_TEXT_INPUT with $USER_TEXT_INPUT": "perl -nl -e \"s/({search_pattern})/{insert_text}\\1{insert_text}/g if {line_filter}; print;\" {file}",
+
+
+  "select {line_filter}": "perl -ne \"print if {line_filter}\" {file}",
+  "delete {line_filter}": "perl -ne \"print if not {line_filter}\" {file}",
+  "clear {line_filter}": "perl -ne \"s/.*//g if {line_filter}; print;\" {file}",
+  "replace {line_filter} with $USER_TEXT_INPUT": "perl -ne \"s/^.*$/{insert_text}/g if {line_filter}; print;\" {file}",
+  "append {line_filter} with $USER_TEXT_INPUT": "perl -pe \"s/$/{insert_text}/ if {line_filter}\" {file}",
+  "prepend {line_filter} with $USER_TEXT_INPUT": "perl -pe \"s/^/{insert_text}/ if {line_filter}\" {file}",
+  "wrap {line_filter} with $USER_TEXT_INPUT": "perl -pe \"s/.*/{insert_text}$&{insert_text}/ if {line_filter}\" {file}"
 }

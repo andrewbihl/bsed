@@ -1,16 +1,16 @@
 hello
 Hello
-world
+w!o!rld
 World
-hello 
+hello world
 hello World
 Hello world
 Hello World
-hello
+helloworld
 HelloWorld
-hello
- hello
-world Hello
+w!o!rldhell!o!
+w!o!rld hell!o!
+w!o!rld Hell!o!
 *
 -
 /

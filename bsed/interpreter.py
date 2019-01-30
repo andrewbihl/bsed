@@ -1,25 +1,27 @@
 import sys
 from os import path
 import subprocess
-from .token_tree import TokenTree
+from .token_tree import TokenTree, Parser, token_trees
 import bsed.definitions as definitions
 from .arg_process import process_args
+from .translator import Translator
 
 
 class Interpreter:
     accepted_flags = {'-i', '-t'}
 
-    def __init__(self, command_tree_file, translations_file):
-        self.tree = TokenTree.from_json(command_tree_file, translations_file)
+    def __init__(self, command_tree_file, translations_dir):
+        self.tree = TokenTree.from_json(command_tree_file)
 
     def print_commands(self):
         print("Supported commands:", file=sys.stderr)
         for k in self.tree.command_translations:
             print(' >', k, file=sys.stderr)
 
-    def build_command(self, command_args, file_arg, line_filter="true") -> (str, [str]):
+    def build_command(self, command_args, file_arg) -> (str, [str]):
         if file_arg is None:
-            file_arg = ''
+            print('File argument not found.:', file=sys.stderr)
+            return None, None
         cmd_statement, flags = process_args(command_args)
         unsupported_flags = [f for f in flags if f not in Interpreter.accepted_flags]
         if len(unsupported_flags) > 0:
@@ -27,11 +29,19 @@ class Interpreter:
             return None, None
 
         # tree.print_command_tree()
-        cmd, user_text_inputs = self.tree.validate_command(cmd_statement)
+        # cmd, user_text_inputs = self.tree.validate_command(cmd_statement)
+        translator = Translator(definitions.CONFIG_DIR)
+        parser = Parser(translator, token_trees)
+        cmd, words_parsed = parser.translate_expression(cmd_statement, extra_args={'file': file_arg})
         if cmd is None:
             return None, None
-        args = [file_arg] + user_text_inputs
-        cmd = cmd.format(*args)
+        # if words_parsed < len(cmd_statement):
+        #     return None, None
+
+        # args = [file_arg] + user_text_inputs
+        # inputs.update({'file': file_arg})
+        # cmd_str = ' '.join(cmd)
+        # cmd_str = cmd_str.format(**inputs)
         return cmd, flags
 
     @classmethod
@@ -66,8 +76,8 @@ class Interpreter:
 
 def default_interpreter():
     command_tree_fp = definitions.COMMAND_TOKEN_TREE
-    translations_fp = definitions.COMMAND_TRANSLATIONS_FILE
-    return Interpreter(command_tree_fp, translations_fp)
+    translations_dir = definitions.CONFIG_DIR
+    return Interpreter(command_tree_fp, translations_dir)
 
 
 def print_commands():

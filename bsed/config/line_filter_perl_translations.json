@@ -1,6 +1,6 @@
 {
-  "lines containing $USER_TEXT_INPUT": "/{0}/'",
-  "lines starting with $USER_TEXT_INPUT": "/^{0}/",
-  "lines ending with $USER_TEXT_INPUT": "/{0}$/",
-  "lines $USER_LINE_START_INDEX to $USER_LINE_END_INDEX": "({0}..{1})"
+  "lines containing $USER_TEXT_INPUT": "/{search_pattern}/",
+  "lines starting with $USER_TEXT_INPUT": "/^{search_pattern}/",
+  "lines ending with $USER_TEXT_INPUT": "/{search_pattern}$/",
+  "lines $USER_LINE_START_INDEX to $USER_LINE_END_INDEX": "({start_index}..{end_index})"
 }

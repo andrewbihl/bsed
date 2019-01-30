@@ -1,15 +1,15 @@
-hello
+hell()
 Hello
 world
 World
-hello 
-hello World
+hell() w()rld
+hell() W()rld
 Hello world
 Hello World
-hello
+hell()w()rld
 HelloWorld
-hello
- hello
+worldhello
+world hello
 world Hello
 *
 -
