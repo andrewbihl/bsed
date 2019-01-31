@@ -9,7 +9,7 @@ from bsed import interpreter
 append_tests = path.join(definitions.TESTS_DIR, 'test_on_lines_ending_with.json')
 
 
-class TestOnLinesStartingWith(unittest.TestCase):
+class TestOnLinesEndingWith(unittest.TestCase):
 
     def setUp(self):
         self.interpreter = interpreter.default_interpreter()
