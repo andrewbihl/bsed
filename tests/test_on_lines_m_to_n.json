@@ -30,8 +30,8 @@
   "test_on_lines_wrap": [
     {
       "input": "hello-world.txt",
-      "expected": "hello-world_on_lines_14_to_16_wrap_-_with_!.txt",
-      "command": ["on", "lines", "14", "to", "16", "wrap", "-", "with", "!"]
+      "expected": "hello-world_on_lines_5_to_8_wrap_space_with_+.txt",
+      "command": ["on", "lines", "5", "to", "8", "wrap", "\\s", "with", "+"]
     }
   ]
 }
