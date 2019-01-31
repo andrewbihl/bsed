@@ -30,8 +30,8 @@
   "test_on_lines_wrap": [
     {
       "input": "hello-world.txt",
-      "expected": "hello-world_on_lines_ending_with_w_wrap_o_with_!.txt",
-      "command": ["on", "lines", "ending", "with", "w", "wrap", "o", "with", "!"]
+      "expected": "hello-world_on_lines_ending_with_d_wrap_o_with_!.txt",
+      "command": ["on", "lines", "ending", "with", "d", "wrap", "o", "with", "!"]
     }
   ]
 }
