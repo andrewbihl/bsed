@@ -1,0 +1,37 @@
+{
+  "test_on_lines_delete": [
+    {
+      "input": "hello-world.txt",
+      "expected": "hello-world_on_lines_3_to_7_delete_o.txt",
+      "command": ["on", "lines", "3", "to", "7", "delete", "o"]
+    }
+  ],
+  "test_on_lines_replace": [
+    {
+      "input": "hello-world.txt",
+      "expected": "hello-world_on_lines_0_to_6_replace_o_with_().txt",
+      "command": ["on", "lines", "0", "to", "6", "replace", "o", "with", "()"]
+    }
+  ],
+  "test_on_lines_prepend": [
+    {
+      "input": "hello-world.txt",
+      "expected": "hello-world_on_lines_6_to_9000_prepend_world_with_O.txt",
+      "command": ["on", "lines", "6", "to", "9000", "prepend", "world", "with", "O"]
+    }
+  ],
+  "test_on_lines_append": [
+    {
+      "input": "hello-world.txt",
+      "expected": "hello-world_on_lines_1_to_2_append_l_with_mao k .txt",
+      "command": ["on", "lines", "1", "to", "2", "append", "l", "with", "mao k "]
+    }
+  ],
+  "test_on_lines_wrap": [
+    {
+      "input": "hello-world.txt",
+      "expected": "hello-world_on_lines_14_to_16_wrap_-_with_!.txt",
+      "command": ["on", "lines", "14", "to", "16", "wrap", "-", "with", "!"]
+    }
+  ]
+}
