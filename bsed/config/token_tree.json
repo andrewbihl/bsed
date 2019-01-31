@@ -85,7 +85,7 @@
   },
 
   "line-filters": {
-    "$translations_file_name": "line_filter_perl_translations.json",
+    "$translations_file_name": "line_condition_translations.json",
     "$var_name": "line_filter",
 
     "lines": {
