@@ -1,6 +1,8 @@
 import sys
 from os import path
 import subprocess
+import argparse
+
 from .token_tree import TokenTree, Parser, token_trees
 import bsed.definitions as definitions
 from .arg_process import process_args
@@ -85,6 +87,14 @@ def print_commands():
 
 
 def main():
+    parser = argparse.ArgumentParser(prog='bsed')
+    parser.add_argument('-t', '--translate', action='store_true')
+    parser.add_argument('-i', '--in-place', action='store_true')
+    parser.add_argument('--', dest='ignore_remaining_args')
+    parser.add_argument('input_file')
+    parser.add_argument('command tokens', nargs='*')
+    print(parser.parse_args())
+    exit(1)
     if len(sys.argv) < 2:
         print('Insufficient arguments. Format: \'bsed <input-file> <command statement>\'\n'
               'Examples: \n'
