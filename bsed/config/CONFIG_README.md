@@ -8,6 +8,9 @@ There are two primary types of documents: parse tree JSON files, and translation
 Translation files are mappings to a sequence of words and a corresponding code snippet or executable statement.
 
 Keys of the translation file are strings containing the lowercase sequence of words representing a user command. 
+
+#### Variable types
+
 There are two types of variables, represented in two ways:
 
 - $CAPITAL_WORD format for simple input variables
@@ -29,6 +32,8 @@ Parse tree files hold the mappings of words to acceptable next words in the path
 The file is loaded in by a TokenTree object which accepts a stream of tokens. Valid commands are parsed by traversing 
 the tree to a completed state using the input. 
 
+#### Variable types
+
 Parse tree files have three special value types, with three formats: 
 
 - $CAPITAL_WORD for simple variables, usually placeholders for user inputs 
@@ -42,14 +47,21 @@ Parse tree files have three special value types, with three formats:
     - At the root of the expression tree is a key $var which maps to the variable that the expression's translation 
     is stored to.
 
-Each of these values will map to a dictionary which includes a $var_name. This is the variable name that the result 
-of translation is stored to. For example, if an input marked with the token $USER_TEXT_INPUT has $var_name: 
-"search_pattern", then the translation string is expecting an input using that keyword, as opposed to other user text
- variables which may have been input. 
  
- ---
  NOTE: When further parse tokens follow an $EVAL or $EXPR token, it means that all leaves of the subtree to be 
  substituted in can be succeeded by the parse tokens which follow."
  
+ #### Metadata types
+
+There are two other tokens which may appear which are not normal command words:
+
+- $var_name: The variable an input var or sub-expression is stored as.
+- $translations_file_name: At the root of any expression tree is the name of the file which translates its parsed 
+phrases.
  
+Each of variable types will include a $var_name. This is the variable name that the translation expects. For 
+example, if
+ an input marked with the token $USER_TEXT_INPUT has $var_name: 
+"search_pattern", then the translation contains `{search_pattern}` (or the equivalent in its language) so that the 
+value can be substituted in.
  
