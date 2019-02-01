@@ -10,10 +10,11 @@ Translation files are mappings to a sequence of words and a corresponding code s
 Keys of the translation file are strings containing the lowercase sequence of words representing a user command. 
 There are two types of variables, represented in two ways:
 
-- $CAPITAL_WORD format for simple variables
-- ${lower_case_in_braces} format for sub-expressions 
+- $CAPITAL_WORD format for simple input variables
+- ${lower_case_in_braces} format for translations of sub-expressions
 
-Simple variables are values substituted into placeholder locations before execution. 
+Simple variables are values substituted into placeholder locations before execution. Examples include line numbers, 
+search patterns, or text to be inserted.
 
 Sub-expressions are evaluated independently, translated, and their translations are substituted into the command 
 before execution.
@@ -41,3 +42,14 @@ Parse tree files have three special value types, with three formats:
     - At the root of the expression tree is a key $var which maps to the variable that the expression's translation 
     is stored to.
 
+Each of these values will map to a dictionary which includes a $var_name. This is the variable name that the result 
+of translation is stored to. For example, if an input marked with the token $USER_TEXT_INPUT has $var_name: 
+"search_pattern", then the translation string is expecting an input using that keyword, as opposed to other user text
+ variables which may have been input. 
+ 
+ ---
+ NOTE: When further parse tokens follow an $EVAL or $EXPR token, it means that all leaves of the subtree to be 
+ substituted in can be succeeded by the parse tokens which follow."
+ 
+ 
+ 
