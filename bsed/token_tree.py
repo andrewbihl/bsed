@@ -118,6 +118,7 @@ class TokenNode:
         return len(next_nodes) == 0
 
 
+# TODO: Refactor
 token_trees = {}
 
 
