@@ -110,6 +110,12 @@ class TokenNode:
     def is_root(self):
         return self.depth == 0
 
+    def is_sub_expression(self):
+        return self.text.startswith(Keyword.EXPR_PREFIX.value)
+
+    def is_user_input(self):
+        return self.text.startswith('$USER')
+
     def longest_child(self):
         return 0 if len(self.children) == 0 else max(c.depth for c in self.children.values())
 

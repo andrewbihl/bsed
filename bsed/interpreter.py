@@ -4,7 +4,7 @@ import subprocess
 import argparse
 import argcomplete
 
-from .token_tree import TokenTree, Parser, token_trees
+from .token_tree import TokenTree, token_trees
 from .parser import Parser
 import bsed.definitions as definitions
 from .arg_process import process_args
@@ -16,6 +16,8 @@ class Interpreter:
 
     def __init__(self, command_tree_file, translations_dir):
         self.tree = TokenTree.from_json(command_tree_file)
+        self.translator = Translator(definitions.CONFIG_DIR)
+        self.parser = Parser(self.translator, token_trees)
 
     def print_commands(self):
         print("Supported commands:", file=sys.stderr)
@@ -34,9 +36,8 @@ class Interpreter:
 
         # tree.print_command_tree()
         # cmd, user_text_inputs = self.tree.validate_command(cmd_statement)
-        translator = Translator(definitions.CONFIG_DIR)
-        parser = Parser(translator, token_trees)
-        cmd, words_parsed = parser.translate_expression(cmd_statement, extra_args={'file': file_arg})
+        
+        cmd, words_parsed = self.parser.translate_expression(cmd_statement, extra_args={'file': file_arg})
         if cmd is None:
             return None, None
         # if words_parsed < len(cmd_statement):
@@ -88,15 +89,18 @@ def print_commands():
     default_interpreter().print_commands()
 
 
-def autocomplete(parsed_args, prefix, **kwargs):
-    # return kwargs['parsed_args'].get('command_tokens', ['HEllo', 'World'])
-    print('>>>>>>>>kwargs: ', kwargs)
-    if prefix.startswith('s'):
-        return ['select']
-    return ['Hello', 'World']
-
-
 def main():
+    interpreter = default_interpreter()
+
+    def autocomplete(parsed_args, prefix, **kwargs):
+        # return kwargs['parsed_args'].get('command_tokens', ['HEllo', 'World'])
+        # print('>>>>>>>>kwargs: ', kwargs)
+        # if prefix.startswith('s'):
+        #     return ['select']
+        # return ['Hello', 'World']
+        return interpreter.parser.possible_next_vals(parsed_args.command_tokens, prefix)
+
+
     parser = argparse.ArgumentParser(prog='bsed')
     parser.add_argument('-t', '--translate', action='store_true')
     parser.add_argument('-i', '--in-place', action='store_true')
@@ -106,7 +110,6 @@ def main():
 
     argcomplete.autocomplete(parser)
     args = parser.parse_args()
-    interpreter = default_interpreter()
     cmd, flags = interpreter.build_command(args.command_tokens, args.input_file)
     if cmd is not None:
         interpreter.execute_command(cmd, flags)

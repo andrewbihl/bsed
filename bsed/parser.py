@@ -22,7 +22,7 @@ class Parser:
         words_consumed = 0
 
         def next_step(remaining_commands):
-            for child_node in sorted(node.children.values(), key=lambda n: -int(n.text.startswith(Keyword.EXPR_PREFIX.value))):
+            for child_node in sorted(node.children.values(), key=lambda n: -int(n.is_sub_expression())):
                 res, args = self.parse_expression(remaining_commands, child_node)
                 if res is not None:
                     return res, args
@@ -75,3 +75,40 @@ class Parser:
             args.update(extra_args)
         words_consumed = len(cmd)
         return self.translator.translate(cmd, args, translation_file_name), words_consumed
+
+    def possible_next_vals(self, command_statement: [str], prefix: str, tree_identifier=Keyword.ROOT_TREE.value):
+
+        def print_node_list(children, prefix=''):
+            print(prefix + ' ' + str([c.text for c in children]))
+
+        def get_next_layer(node):
+            print('!#@$!@#%!@#%!@   ', str(node))
+            res = []
+            subtree_ids = set()
+            for c in node.children.values():
+                if not c.is_sub_expression():
+                    res.append(c)
+                else:
+                    subtree_ids.add(Keyword.expr_key_to_identifier(c.text))
+            print(subtree_ids)
+            res += [c for tid in subtree_ids for c in self.trees[tid].root.children.values()]
+            return res
+
+        nodes = list(self.trees[tree_identifier].root.children.values())
+        print('#########', nodes)
+        print('>>>>>>>>> command_statement:', command_statement)
+        for token in command_statement:
+            next_layer = []
+            print_node_list(nodes, prefix='nodes:')
+            while len(nodes) > 0:
+                n = nodes.pop(0)
+                assert isinstance(n, TokenNode)
+                if not (n.text == token.lower() or n.is_sub_expression() or n.is_user_input()):
+                    continue
+                next_layer += get_next_layer(n)
+            nodes = next_layer
+        print_node_list(nodes)
+        # valid_children = [c for c in n.children.values() if c.is_user_input()]
+        print_node_list(nodes)
+        final_options = [c for c in nodes if not c.is_sub_expression()]
+        return [c.text for c in final_options]
