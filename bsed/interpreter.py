@@ -24,51 +24,52 @@ class Interpreter:
         for k in self.tree.command_translations:
             print(' >', k, file=sys.stderr)
 
-    def build_command(self, command_args, file_arg) -> (str, [str]):
-        if file_arg is None:
+    def build_command_and_execute(self, inputs: [str],  return_output=False, stdin=sys.stdin):
+        cmd, args = self._build_command(inputs)
+        if cmd is None:
+            print('Invalid command.', file=sys.stderr)
+            return None
+        return Interpreter.execute_command(cmd, translation_only=args.translate, in_place=args.in_place,
+                                           return_output=return_output, stdin=sys.stdin)
+
+    def _build_command(self, inputs: [str]) -> (str, [str]):
+
+        def autocomplete(parsed_args, prefix, **kwargs):
+            return self.parser.possible_next_vals(parsed_args.command_tokens, prefix)
+
+        parser = argparse.ArgumentParser(prog='bsed')
+        parser.add_argument('-t', '--translate', action='store_true')
+        parser.add_argument('-i', '--in-place', action='store_true')
+        parser.add_argument('--', dest='ignore_remaining_args')
+        parser.add_argument('input_file')
+        parser.add_argument('command_tokens', nargs='*').completer = autocomplete
+
+        argcomplete.autocomplete(parser)
+        args = parser.parse_args(inputs)
+
+        if args.input_file is None:
             print('File argument not found.:', file=sys.stderr)
             return None, None
-        cmd_statement, flags = process_args(command_args)
-        unsupported_flags = [f for f in flags if f not in Interpreter.accepted_flags]
-        if len(unsupported_flags) > 0:
-            print('Invalid flags:', unsupported_flags, file=sys.stderr)
-            return None, None
 
-        # tree.print_command_tree()
-        # cmd, user_text_inputs = self.tree.validate_command(cmd_statement)
-        
-        cmd, words_parsed = self.parser.translate_expression(cmd_statement, extra_args={'file': file_arg})
+        cmd, words_parsed = self.parser.translate_expression(args.command_tokens, extra_args={'file': args.input_file})
         if cmd is None:
             return None, None
-        # if words_parsed < len(cmd_statement):
-        #     return None, None
-
-        # args = [file_arg] + user_text_inputs
-        # inputs.update({'file': file_arg})
-        # cmd_str = ' '.join(cmd)
-        # cmd_str = cmd_str.format(**inputs)
-        return cmd, flags
+        return cmd, args
 
     @classmethod
-    def execute_command(cls, cmd, flags, return_output=False, stdin=sys.stdin):
+    def execute_command(cls, cmd, translation_only=False, in_place=False, return_output=False, stdin=sys.stdin):
         if cmd is None:
             return None
         res = None
-        translation_only = '-t' in flags
-        in_place = '-i' in flags
         if in_place:
             parts = cmd.split()
             cmd = ' '.join(parts[:-1] + ['-i'] + [parts[-1]])
         if translation_only:
             print('Translation:\n >', cmd)
         else:
-            # if return_output:
-            #     with popen(cmd) as fout:
-            #         return fout.read()
             stdout = subprocess.PIPE if return_output else None
             with subprocess.Popen(cmd, shell=True, stdout=stdout, stdin=stdin) as p:
                 try:
-                    # exit_code = subprocess.call(cmd, shell=True, stdout=stdout)
                     exit_code = p.wait()
                     if exit_code < 0:
                         print("Child was terminated by signal", -exit_code, file=sys.stderr)
@@ -91,27 +92,4 @@ def print_commands():
 
 def main():
     interpreter = default_interpreter()
-
-    def autocomplete(parsed_args, prefix, **kwargs):
-        # return kwargs['parsed_args'].get('command_tokens', ['HEllo', 'World'])
-        # print('>>>>>>>>kwargs: ', kwargs)
-        # if prefix.startswith('s'):
-        #     return ['select']
-        # return ['Hello', 'World']
-        return interpreter.parser.possible_next_vals(parsed_args.command_tokens, prefix)
-
-
-    parser = argparse.ArgumentParser(prog='bsed')
-    parser.add_argument('-t', '--translate', action='store_true')
-    parser.add_argument('-i', '--in-place', action='store_true')
-    parser.add_argument('--', dest='ignore_remaining_args')
-    parser.add_argument('input_file')
-    parser.add_argument('command_tokens', nargs='*').completer = autocomplete
-
-    argcomplete.autocomplete(parser)
-    args = parser.parse_args()
-    cmd, flags = interpreter.build_command(args.command_tokens, args.input_file)
-    if cmd is not None:
-        interpreter.execute_command(cmd, flags)
-    else:
-        print('Invalid command.', file=sys.stderr)
+    interpreter.build_command_and_execute(sys.argv[1:])

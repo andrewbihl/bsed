@@ -26,8 +26,7 @@ class TestInPlaceFlag(unittest.TestCase):
         expected = TestInPlaceFlag.__f_to_str(expected_result_file)
         tmp_file = 'tmp.txt'
         copy(input_file, 'tmp.txt')
-        cmd, flags = self.interpreter.build_command(command, tmp_file)
-        self.interpreter.execute_command(cmd, flags, return_output=True)
+        self.interpreter.build_command_and_execute([tmp_file] + command, return_output=True)
         res = TestInPlaceFlag.__f_to_str(tmp_file)
         os.remove(tmp_file)
         self.assertEqual(expected, res)

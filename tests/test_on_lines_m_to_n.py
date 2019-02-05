@@ -19,8 +19,7 @@ class TestOnLinesMtoN(unittest.TestCase):
     def perform_test(self, command: [str], input_file: str, expected_result_file: str):
         with open(expected_result_file, 'r') as fin:
             expected = fin.read()
-        cmd, flags = self.interpreter.build_command(command, input_file)
-        res = self.interpreter.execute_command(cmd, flags, return_output=True)
+        res = self.interpreter.build_command_and_execute([input_file] + command, return_output=True)
         self.assertEqual(expected, res)
 
     def perform_test_from_key(self, key: str):
