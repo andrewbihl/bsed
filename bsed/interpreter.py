@@ -51,7 +51,7 @@ class Interpreter:
         parser.add_argument('input_file')
         parser.add_argument('command_tokens', nargs='*').completer = autocomplete
 
-        argcomplete.autocomplete(parser, validator=custom_validator)
+        argcomplete.autocomplete(parser, validator=custom_validator, always_complete_options=False)
         args = parser.parse_args(inputs)
 
         if args.input_file is None:
