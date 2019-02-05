@@ -78,11 +78,7 @@ class Parser:
 
     def possible_next_vals(self, command_statement: [str], prefix: str, tree_identifier=Keyword.ROOT_TREE.value):
 
-        def print_node_list(children, prefix=''):
-            print(prefix + ' ' + str([c.text for c in children]))
-
         def get_next_layer(node):
-            print('!#@$!@#%!@#%!@   ', str(node))
             res = []
             subtree_ids = set()
             for c in node.children.values():
@@ -95,11 +91,8 @@ class Parser:
             return res
 
         nodes = list(self.trees[tree_identifier].root.children.values())
-        print('#########', nodes)
-        print('>>>>>>>>> command_statement:', command_statement)
         for token in command_statement:
             next_layer = []
-            print_node_list(nodes, prefix='nodes:')
             while len(nodes) > 0:
                 n = nodes.pop(0)
                 assert isinstance(n, TokenNode)
@@ -107,8 +100,5 @@ class Parser:
                     continue
                 next_layer += get_next_layer(n)
             nodes = next_layer
-        print_node_list(nodes)
-        # valid_children = [c for c in n.children.values() if c.is_user_input()]
-        print_node_list(nodes)
         final_options = [c for c in nodes if not c.is_sub_expression()]
         return [c.text for c in final_options]
