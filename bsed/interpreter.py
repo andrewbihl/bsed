@@ -37,6 +37,13 @@ class Interpreter:
         def autocomplete(parsed_args, prefix, **kwargs):
             return self.parser.possible_next_vals(parsed_args.command_tokens, prefix)
 
+        def custom_validator(completion, prefix):
+            if not completion.startswith(prefix):
+                return False
+            if completion.startswith('$USER'):
+                return False
+            return True
+
         parser = argparse.ArgumentParser(prog='bsed')
         parser.add_argument('-t', '--translate', action='store_true')
         parser.add_argument('-i', '--in-place', action='store_true')
@@ -44,7 +51,7 @@ class Interpreter:
         parser.add_argument('input_file')
         parser.add_argument('command_tokens', nargs='*').completer = autocomplete
 
-        argcomplete.autocomplete(parser)
+        argcomplete.autocomplete(parser, validator=custom_validator)
         args = parser.parse_args(inputs)
 
         if args.input_file is None:
