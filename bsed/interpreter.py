@@ -5,6 +5,7 @@ import argparse
 import argcomplete
 
 from .token_tree import TokenTree, Parser, token_trees
+from .parser import Parser
 import bsed.definitions as definitions
 from .arg_process import process_args
 from .translator import Translator

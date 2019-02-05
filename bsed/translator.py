@@ -1,7 +1,7 @@
 import sys
 from os import path
 import json
-from .token_tree import TranslatorInterface
+from .parser import TranslatorInterface
 from typing import Optional
 
 
