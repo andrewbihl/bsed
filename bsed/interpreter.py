@@ -1,10 +1,10 @@
 import sys
-from os import path, system
+import json
 import subprocess
 import argparse
 import argcomplete
 
-from .token_tree import TokenTree, token_trees
+from .token_tree import TokenTree, token_trees, Keyword
 from .parser import Parser
 import bsed.definitions as definitions
 from .translator import Translator
@@ -19,8 +19,12 @@ class Interpreter:
         self.parser = Parser(self.translator, token_trees)
 
     def print_commands(self):
+        with open(definitions.COMMAND_TOKEN_TREE, 'r') as fin:
+            tree_dict = json.load(fin)
         print("Supported commands:", file=sys.stderr)
-        for k in self.tree.command_translations:
+        translation_file = tree_dict[Keyword.ROOT_TREE.value][Keyword.TRANSLATIONS_FILE.value]
+        self.translator.load_translations(translation_file)
+        for k in self.translator.translations[translation_file]:
             print(' >', k, file=sys.stderr)
 
     def build_command_and_execute(self, inputs: [str],  return_output=False, stdin=sys.stdin):
@@ -101,5 +105,13 @@ def print_help():
 
 
 def main():
+    if len(sys.argv[1:]) == 1:
+        if sys.argv[1] == 'help':
+            print_help()
+            return
+        if sys.argv[1] == 'commands':
+            print_commands()
+            return
+
     interpreter = default_interpreter()
     interpreter.build_command_and_execute(sys.argv[1:])
