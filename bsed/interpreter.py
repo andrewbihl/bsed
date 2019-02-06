@@ -39,10 +39,18 @@ class Interpreter:
     def _build_command(self, inputs: [str]) -> (str, [str]):
 
         def autocomplete(parsed_args, prefix, **kwargs):
-            return self.parser.possible_next_vals(parsed_args.command_tokens, prefix)
+            print('@#######', parsed_args)
+            print('>>>>>>>>>> ', kwargs)
+            command_tokens = parsed_args.command_tokens
+            if len(command_tokens) > 0:
+                cmd_start = 0
+                if os.path.exists(command_tokens[0]):
+                    cmd_start = 1
+                return self.parser.possible_next_vals(command_tokens[cmd_start:], prefix)
+            return self.parser.possible_next_vals(command_tokens, prefix) + custom_root_commands()
 
-        def custom_root_commands(parsed_args, prefix, **kwargs):
-            return ['help', 'commands'] + os.listdir()
+        def custom_root_commands(**kwargs):
+            return ['help', 'commands']
 
         def custom_validator(completion, prefix):
             if not completion.startswith(prefix):
@@ -55,17 +63,25 @@ class Interpreter:
         parser.add_argument('-t', '--translate', action='store_true')
         parser.add_argument('-i', '--in-place', action='store_true')
         parser.add_argument('--', dest='ignore_remaining_args')
-        parser.add_argument('input_file').completer = custom_root_commands
+        # parser.add_argument('input_file', nargs='?', default='').completer = custom_root_commands
         parser.add_argument('command_tokens', nargs='*').completer = autocomplete
 
         argcomplete.autocomplete(parser, validator=custom_validator, always_complete_options=False)
-        args = parser.parse_args(inputs)
 
-        if args.input_file is None:
-            print('File argument not found.:', file=sys.stderr)
+        input_file = ''
+        args = parser.parse_args(inputs)
+        tokens = args.command_tokens
+        if len(tokens) < 2:
+            return None, None
+        if os.path.exists(tokens[0]):
+            input_file = args.command_tokens.pop(0)
+        elif os.path.exists(tokens[-1]):
+            input_file = args.command_tokens.pop(-1)
+        elif sys.stdin.isatty():
+            print('File argument not found.', file=sys.stderr)
             return None, None
 
-        cmd, words_parsed = self.parser.translate_expression(args.command_tokens, extra_args={'file': args.input_file})
+        cmd, words_parsed = self.parser.translate_expression(args.command_tokens, extra_args={'file': input_file})
         if cmd is None:
             return None, None
         return cmd, args
