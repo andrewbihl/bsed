@@ -21,7 +21,7 @@ setuptools.setup(
     entry_points={
         'console_scripts': [
             'bsed = bsed.interpreter:main',
-            'bsed-commands = bsed.interpreter:print_commands'
+            'bsed-enable-autocomplete = bsed.configuration:enable_autocomplete'
         ]
     },
     include_package_data=True,
