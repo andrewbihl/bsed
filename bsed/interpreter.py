@@ -1,5 +1,5 @@
 import sys
-from os import path
+from os import path, system
 import subprocess
 import argparse
 import argcomplete
@@ -94,6 +94,10 @@ def default_interpreter():
 
 def print_commands():
     default_interpreter().print_commands()
+
+
+def print_help():
+    default_interpreter().build_command_and_execute(['-h'])
 
 
 def main():
