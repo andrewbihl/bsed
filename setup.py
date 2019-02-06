@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="bsed",
-    version="0.1.9",
+    version="0.2.0",
     author="Andrew Bihl",
     author_email="andrewbihlva@gmail.com",
     description="Simple english syntax for stream editing.",
@@ -20,8 +20,7 @@ setuptools.setup(
     ],
     entry_points={
         'console_scripts': [
-            'bsed = bsed.interpreter:main',
-            'bsed-enable-autocomplete = bsed.configuration:enable_autocomplete'
+            'bsed = bsed.interpreter:main'
         ]
     },
     include_package_data=True,
