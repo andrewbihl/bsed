@@ -76,21 +76,32 @@ class Parser:
         words_consumed = len(cmd)
         return self.translator.translate(cmd, args, translation_file_name), words_consumed
 
+    @staticmethod
+    def _update_node_tree(node, children):
+        if node.children is not None and len(node.children) > 0:
+            for c in node.children.values():
+                Parser._update_node_tree(c, children)
+        else:
+            node.children = children
+
     def possible_next_vals(self, command_statement: [str], prefix: str, tree_identifier=Keyword.ROOT_TREE.value):
 
         def get_next_layer(node):
             res = []
-            subtree_ids = set()
+            subtree_ids = []
             for c in node.children.values():
                 if not c.is_sub_expression():
                     res.append(c)
                 else:
-                    subtree_ids.add(Keyword.expr_key_to_identifier(c.text))
-            print(subtree_ids)
-            res += [c for tid in subtree_ids for c in self.trees[tid].root.children.values()]
+                    subtree_ids.append((Keyword.expr_key_to_identifier(c.text), c.children))
+            for tid, post_expression_nodes in subtree_ids:
+                for c in self.trees[tid].root.children.values():
+                    Parser._update_node_tree(c, post_expression_nodes)
+                    res.append(c)
             return res
 
         nodes = list(self.trees[tree_identifier].root.children.values())
+
         for token in command_statement:
             next_layer = []
             while len(nodes) > 0:
@@ -98,6 +109,11 @@ class Parser:
                 assert isinstance(n, TokenNode)
                 if not (n.text == token.lower() or n.is_sub_expression() or n.is_user_input()):
                     continue
+                if n.is_user_input():
+                    input_type = keyword_to_user_input_type(n.text)
+                    assert isinstance(input_type, InputType)
+                    if not input_type.is_valid(token.lower()):
+                        continue
                 next_layer += get_next_layer(n)
             nodes = next_layer
         final_options = [c for c in nodes if not c.is_sub_expression()]
