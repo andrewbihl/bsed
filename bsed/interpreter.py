@@ -1,3 +1,4 @@
+import os
 import sys
 import json
 import subprocess
@@ -40,6 +41,9 @@ class Interpreter:
         def autocomplete(parsed_args, prefix, **kwargs):
             return self.parser.possible_next_vals(parsed_args.command_tokens, prefix)
 
+        def custom_root_commands(parsed_args, prefix, **kwargs):
+            return ['help', 'commands'] + os.listdir()
+
         def custom_validator(completion, prefix):
             if not completion.startswith(prefix):
                 return False
@@ -51,7 +55,7 @@ class Interpreter:
         parser.add_argument('-t', '--translate', action='store_true')
         parser.add_argument('-i', '--in-place', action='store_true')
         parser.add_argument('--', dest='ignore_remaining_args')
-        parser.add_argument('input_file')
+        parser.add_argument('input_file').completer = custom_root_commands
         parser.add_argument('command_tokens', nargs='*').completer = autocomplete
 
         argcomplete.autocomplete(parser, validator=custom_validator, always_complete_options=False)

@@ -116,5 +116,5 @@ class Parser:
                         continue
                 next_layer += get_next_layer(n)
             nodes = next_layer
-        final_options = [c for c in nodes if not c.is_sub_expression()]
-        return [c.text for c in final_options]
+        final_options = [c.text for c in nodes if not c.is_sub_expression()]
+        return final_options
