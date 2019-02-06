@@ -47,7 +47,7 @@ class InputType(IntEnum):
         if self.is_integer():
             try:
                 _ = int(text)
-            except TypeError:
+            except ValueError:
                 # Not an integer
                 return False
         return True
