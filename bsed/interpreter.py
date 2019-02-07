@@ -27,6 +27,11 @@ class Interpreter:
         self.translator.load_translations(translation_file)
         for k in self.translator.translations[translation_file]:
             print(' >', k, file=sys.stderr)
+        print("\nLine filters:", file=sys.stderr)
+        translation_file = tree_dict['line-filters'][Keyword.TRANSLATIONS_FILE.value]
+        self.translator.load_translations(translation_file)
+        for k in self.translator.translations[translation_file]:
+            print(' >', k, file=sys.stderr)
 
     def build_command_and_execute(self, inputs: [str],  return_output=False, stdin=sys.stdin):
         cmd, args = self._build_command(inputs)
