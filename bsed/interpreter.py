@@ -9,6 +9,7 @@ from .token_tree import TokenTree, token_trees, Keyword
 from .parser import Parser
 import bsed.definitions as definitions
 from .translator import Translator
+from .special_chars import parse_special_chars
 
 
 class Interpreter:
@@ -130,6 +131,7 @@ def print_help():
 
 
 def main():
+
     if len(sys.argv[1:]) == 1:
         if sys.argv[1] == 'help':
             print_help()
@@ -138,5 +140,6 @@ def main():
             print_commands()
             return
 
+    args = parse_special_chars(sys.argv[1:])
     interpreter = default_interpreter()
-    interpreter.build_command_and_execute(sys.argv[1:])
+    interpreter.build_command_and_execute(args)
