@@ -1,6 +1,6 @@
 import abc
 
-from .token_tree import TokenNode, TokenTree, Keyword, InputType, keyword_to_user_input_type
+from .token_tree import TokenNode, Keyword, InputType, keyword_to_user_input_type
 
 
 class TranslatorInterface(abc.ABC):
@@ -83,7 +83,7 @@ class Parser:
         else:
             node.children = children
 
-    def possible_next_vals(self, command_statement: [str], prefix: str, tree_identifier=Keyword.ROOT_TREE.value):
+    def possible_next_vals(self, command_statement: [str], tree_identifier=Keyword.ROOT_TREE.value):
 
         def get_next_layer(node):
             res = []

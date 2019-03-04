@@ -50,8 +50,8 @@ class Interpreter:
                 cmd_start = 0
                 if os.path.exists(command_tokens[0]):
                     cmd_start = 1
-                return self.parser.possible_next_vals(command_tokens[cmd_start:], prefix)
-            return self.parser.possible_next_vals(command_tokens, prefix) + custom_root_commands()
+                return self.parser.possible_next_vals(command_tokens[cmd_start:])
+            return self.parser.possible_next_vals(command_tokens) + custom_root_commands()
 
         def custom_root_commands(**kwargs):
             return ['help', 'commands']
