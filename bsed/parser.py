@@ -19,7 +19,6 @@ class Parser:
             return None, None
         input_vars = {}
         cmd_words = []
-        words_consumed = 0
 
         def next_step(remaining_commands):
             for child_node in sorted(node.children.values(), key=lambda n: -int(n.is_sub_expression())):
