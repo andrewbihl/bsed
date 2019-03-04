@@ -64,10 +64,9 @@ class Interpreter:
             return True
 
         parser = argparse.ArgumentParser(prog='bsed')
-        parser.add_argument('-t', '--translate', action='store_true')
-        parser.add_argument('-i', '--in-place', action='store_true')
+        parser.add_argument('-t', '--translate', action='store_true', help='Print the translated comamnd without executing.')
+        parser.add_argument('-i', '--in-place', action='store_true', help='Save the output to the input file. Not recommended.')
         parser.add_argument('--', dest='ignore_remaining_args')
-        # parser.add_argument('input_file', nargs='?', default='').completer = custom_root_commands
         parser.add_argument('command_tokens', nargs='*').completer = autocomplete
 
         argcomplete.autocomplete(parser, validator=custom_validator, always_complete_options=False)
