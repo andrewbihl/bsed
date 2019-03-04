@@ -15,7 +15,7 @@ from .special_chars import parse_special_chars
 class Interpreter:
     accepted_flags = {'-i', '-t'}
 
-    def __init__(self, command_tree_file, translations_dir):
+    def __init__(self, command_tree_file):
         self.tree = TokenTree.from_json(command_tree_file)
         self.translator = Translator(definitions.CONFIG_DIR)
         self.parser = Parser(self.translator, token_trees)
@@ -45,8 +45,6 @@ class Interpreter:
     def _build_command(self, inputs: [str]) -> (str, [str]):
 
         def autocomplete(parsed_args, prefix, **kwargs):
-            print('@#######', parsed_args)
-            print('>>>>>>>>>> ', kwargs)
             command_tokens = parsed_args.command_tokens
             if len(command_tokens) > 0:
                 cmd_start = 0
@@ -118,8 +116,7 @@ class Interpreter:
 
 def default_interpreter():
     command_tree_fp = definitions.COMMAND_TOKEN_TREE
-    translations_dir = definitions.CONFIG_DIR
-    return Interpreter(command_tree_fp, translations_dir)
+    return Interpreter(command_tree_fp)
 
 
 def print_commands():
