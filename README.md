@@ -1,5 +1,5 @@
 # bsed
-Simple, english syntax on top of Perl text processing. Designed to replace simple uses of sed/grep/AWK/Perl.
+Simple SQL-like syntax on top of Perl text processing. Designed to replace simple uses of sed/grep/AWK/Perl.
 
 
 Bsed is a stream editor. In contrast to interactive text editors, stream editors process text in one go,
