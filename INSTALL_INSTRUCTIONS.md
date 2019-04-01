@@ -1,11 +1,11 @@
 # Instructions
 
 1. Install bsed
-    - pip3 install --upgrade bsed
+    - `pip3 install --upgrade bsed`
 2. Install argcomplete
-    - pip3 install argcomplete
+    - `pip3 install argcomplete`
 3. Register bsed for autocompletion
-    - echo eval "$(register-python-argcomplete bsed)" >> ~/.bash_profile
+    - `echo eval "$(register-python-argcomplete bsed)" >> ~/.bash_profile`
 
 
 # Common issues
