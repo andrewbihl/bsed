@@ -73,13 +73,13 @@ AWK: `awk '{gsub(/Jack/,"Jill")}' file.txt`
 
 Sed: `sed -i 's/Jack/Jill/g' file.txt`
 
-Perl: `perl -nl -e "s/Jack/Jill/g; print;" file.txt` 
+Perl: `perl -p -i -e 's/Jack/Jill/g' file.txt` 
 
-None of these is particularly intuitive, and the details of the syntax are complex even for the simplest of commands.
+None of these is particularly intuitive, and the details of the syntax are complex even for the simplest of commands. To the beginning user, none of the following is obvious:
 
 - What is the difference between {} and () in the AWK command?
 - What is `-i` in sed? What are the `s` or the `g` for? 
-- Why single quotes in sed, but double quotes in Perl? Are these interchangeable?
+- Why single quotes as opposed to double quotes? Are these interchangeable?
 - What are those flags in Perl?
 
 As a point of contrast, consider the structure of SQL:
