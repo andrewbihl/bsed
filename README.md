@@ -2,8 +2,8 @@
 Simple, english syntax on top of Perl text processing. Designed to replace simple uses of sed/grep/awk/perl.
 
 
-Bsed is a stream editor. In contrast to interactive text editors, stream editors process text in one go and 
-apply a command to an entire input stream or open file. 
+Bsed is a stream editor. In contrast to interactive text editors, stream editors process text in one go,
+applying a command to an entire input stream or open file. 
 
 
 # Quick Start
