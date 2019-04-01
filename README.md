@@ -18,9 +18,7 @@ Some example commands:
 
 1. Install bsed
     - `pip3 install --upgrade bsed`
-2. Install argcomplete
-    - `pip3 install argcomplete`
-3. Register bsed for autocompletion
+2. Register bsed for autocompletion
     - `echo eval "$(register-python-argcomplete bsed)" >> ~/.bash_profile`
 
 Open a new shell (or run `source ~/.bash_profile`). 
