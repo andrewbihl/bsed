@@ -1,5 +1,5 @@
 # bsed
-Simple, english syntax on top of Perl text processing. Designed to replace simple uses of sed/grep/awk/perl.
+Simple, english syntax on top of Perl text processing. Designed to replace simple uses of sed/grep/AWK/Perl.
 
 
 Bsed is a stream editor. In contrast to interactive text editors, stream editors process text in one go,
@@ -31,9 +31,9 @@ info on flag options.
 # Motivation
 
 **TLDR**: Most batch text processing tools are too complex for the very occasional user. bsed has simple, english 
-syntax with bash autocomplete so that you don't have to go searching Stackoverflow each time you need sed/awk/Perl.
+syntax with bash autocomplete so that you don't have to go searching Stackoverflow each time you need sed/AWK/Perl.
 
-Many common text transformations are fit for tools such as grep, sed, and awk. These utilities allow for fast 
+Many common text transformations are fit for tools such as grep, sed, and AWK. These utilities allow for fast 
 modification of text in one operation (as opposed to interactive text editors). Being command line tools, they also 
 allow for piping of outputs into subsequent commands. Finally, they are common default software on many systems, 
 making them easy to rely on and good subjects for to find support/help.
@@ -45,7 +45,7 @@ making them easy to rely on and good subjects for to find support/help.
   - Placing text at beginning or end of certain lines
   - Getting a range of line numbers
 
-## Problems with grep/sed/awk
+## Problems with grep/sed/AWK
 
 1. People don't know which tool to use
 2. Varying levels of regex support
@@ -54,7 +54,7 @@ making them easy to rely on and good subjects for to find support/help.
 ## Enter Perl
 
 Perl solves these issues–in theory–by providing a one-stop shop for all of these uses. 
-Perl one-liners provide the set of functionality containing grep, sed, and awk use cases, and have syntax designed to
+Perl one-liners provide the set of functionality containing grep, sed, and AWK use cases, and have syntax designed to
  mimic that of sed. Furthermore, Perl includes advanced regex support and is for many cases more efficient than any of 
  its counterparts. 
 
@@ -71,7 +71,7 @@ Even fewer people know Perl, as the syntax proves to be even more daunting and d
 
 For example, a user may wish to perform a find-and-replace, replace "Jack" with "Jill".
 
-Awk: `awk '{gsub(/Jack/,"Jill")}' file.txt`
+AWK: `awk '{gsub(/Jack/,"Jill")}' file.txt`
 
 Sed: `sed -i 's/Jack/Jill/g' file.txt`
 
@@ -79,7 +79,7 @@ Perl: `perl -nl -e "s/Jack/Jill/g; print;" file.txt`
 
 None of these is particularly intuitive, and the details of the syntax are complex even for the simplest of commands.
 
-- What is the difference between {} and () in the awk command?
+- What is the difference between {} and () in the AWK command?
 - What is `-i` in sed? What are the `s` or the `g` for? 
 - Why single quotes in sed, but double quotes in Perl? Are these interchangeable?
 - What are those flags in Perl?
