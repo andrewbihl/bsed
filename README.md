@@ -62,7 +62,7 @@ Awk: `awk '{gsub(/Jack/,"Jill")}' file.txt`
 
 Sed: `sed -i 's/Jack/Jill/g' file.txt`
 
-Perl: `perl -nl -e "s/{Jack}/{Jill}/g; print;" file.txt` 
+Perl: `perl -nl -e "s/Jack/Jill/g; print;" file.txt` 
 
 None of these is particularly intuitive, and the details of the syntax are complex even for the simplest of commands.
 
