@@ -103,15 +103,16 @@ To solve this, bsed implements many common command types in an understandable En
  
  - Finds records on the first 2000 lines referencing the city. Good for quick exploration of very large files.
  
- `bsed customer_info.txt replace "Jim Johnson" with "John Johnson" | replace "jimjohnson@gmail.com" with 
- "johnjohnson@gmail.com"`
+ `bsed customer_info.txt replace 'Jim Johnson' with 'John Johnson' | bsed replace 'jimjohnson@gmail.com' with 
+ 'johnjohnson@gmail.com'`
  
- - Fix a mistaken first name
+ - Fix a mistaken first name. Notice commands are chained together with `|`.
  
  ## Use the -t flag to learn or debug
  
- Any command can be executed and the command translation will be printed. This is good for debugging regex, build up 
- more complex queries, or just for learning. Without having to remember Perl from scratch, you can get a quick 
- command structure and then modify it or build on it. 
+ Any command can be executed with the -t flag and the command translation will be printed. 
  
- For users wishing to dive into Perl, learning with examples can be done easily with the -t flag.
+ This is nice to debug 
+ regex, build up  more complex queries, or just learn some Perl through examples. Without having to remember Perl from 
+ scratch, you can get a quick command structure and then modify it or build on it. 
+ 
