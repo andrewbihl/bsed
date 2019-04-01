@@ -5,6 +5,14 @@ Simple, english syntax on top of Perl text processing. Designed to replace simpl
 Bsed is a stream editor. In contrast to interactive text editors, stream editors process text in one go,
 applying a command to an entire input stream or open file. 
 
+Some example commands:
+
+- `bsed contacts.csv delete lines containing 'myemail@website.com'`
+- `bsed giant_malformatted.json replace '\'' with '\"' | bsed replace 'True' with 'true' | bsed replace 'False' with 
+'false'` 
+- `bsed file.txt append Yahoo with '!'`
+- `bsed file.py on lines 25 to 75 replace 'San Francisco' with 'San Diego'`
+- `bsed file.py append lines containing 'deprecated_package' with '  # TODO: Update module'`
 
 # Quick Start
 
