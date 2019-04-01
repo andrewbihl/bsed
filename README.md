@@ -62,4 +62,43 @@ sufficient to recall the basics for years.
 
 ## For the average user
 
-Perl is just too complicated
+The most common use case is a one-off command they need to clean up a single file. Because of this, the learning 
+curve of understanding Perl (or sed for that matter) is often not worth the upfront investment.
+
+## Use bsed for basic tasks
+
+To solve this, bsed implements many common command types in an understandable English syntax designed to be as usable
+ as SQL. Some examples of uses:
+ 
+ `bsed file.txt select lines 0 to 50`
+ 
+ - Print first 50 lines, indexed from zero.
+ 
+ `bsed file.py clear lines starting with '\s*#'`
+ 
+ - Replace comments in a python file with blank lines
+ 
+ `bsed file.csv delete lines containing 'Andrew Johnson'` 
+ 
+ - Remove any records with this person's name in the CSV
+ 
+ `bsed performance_review.txt wrap 'Employee of the Month' with '\"'`
+ 
+ - Puts the phrase "Employee of the Month" in quotes
+ 
+ `bsed data.csv on lines 0 to 2000 select lines containing 'San Diego'`
+ 
+ - Finds records on the first 2000 lines referencing the city. Good for quick exploration of very large files.
+ 
+ `bsed customer_info.txt replace "Jim Johnson" with "John Johnson" | replace "jimjohnson@gmail.com" with 
+ "johnjohnson@gmail.com"`
+ 
+ - Fix a mistaken first name
+ 
+ ## Use the -t flag to learn or debug
+ 
+ Any command can be executed and the command translation will be printed. This is good for debugging regex, build up 
+ more complex queries, or just for learning. Without having to remember Perl from scratch, you can get a quick 
+ command structure and then modify it or build on it. 
+ 
+ For users wishing to dive into Perl, learning with examples can be done easily with the -t flag.
