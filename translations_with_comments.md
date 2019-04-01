@@ -19,3 +19,9 @@ print("Translated command:", command)
 
 * The translations are written to work with Python's `.format()` function on strings.
 
+* Some command statements may have multiple translations. Unless a clear preference is marked, testing is needed to determine which is optimal.
+
+* Where there is a particular implementation found to be best, that number should be marked with a * and an explanation should be written below.
+
+* Arguments are referenced by index of the order they appear in the command statement. The file argument is always index 0.
+
