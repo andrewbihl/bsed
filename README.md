@@ -30,9 +30,8 @@ info on flag options.
 
 # Motivation
 
-TLDR: Most text processing tools are too complex for the very occasional user. bsed has simple, english syntax with 
-bash autocomplete so that you don't have to go searching Stackoverflow each time you need to do stream 
-text editing.
+**TLDR**: Most batch text processing tools are too complex for the very occasional user. bsed has simple, english 
+syntax with bash autocomplete so that you don't have to go searching Stackoverflow each time you need sed/awk/Perl.
 
 Many common text transformations are fit for tools such as grep, sed, and awk. These utilities allow for fast 
 modification of text in one operation (as opposed to interactive text editors). Being command line tools, they also 
