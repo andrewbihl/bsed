@@ -66,6 +66,11 @@ Perl: `perl -nl -e "s/Jack/Jill/g; print;" file.txt`
 
 None of these is particularly intuitive, and the details of the syntax are complex even for the simplest of commands.
 
+- What is the difference between {} and () in the awk command?
+- What is `-i` in sed? What are the `s` or the `g` for? 
+- Why single quotes in sed, but double quotes in Perl? Are these interchangeable?
+- What are those flags in Perl?
+
 As a point of contrast, consider the structure of SQL:
 
 `SELECT email FROM User WHERE country='Argentina';`
@@ -74,8 +79,8 @@ You don't need to know SQL to be able to understand the purpose of the command. 
 
 ## For the average user
 
-The most common use case is a one-off command they need to clean up a single file. Because of this, the learning 
-curve of understanding Perl (or sed for that matter) is often not worth the upfront investment.
+The most common use case is a one-off command they need to transform a single file. Because of this, the learning 
+curve of understanding Perl (or sed for that matter) is often not worth the upfront time investment.
 
 ## Use bsed for basic tasks
 
