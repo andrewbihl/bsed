@@ -23,6 +23,7 @@ setuptools.setup(
             'bsed = bsed.interpreter:main'
         ]
     },
+    install_requires=['argcomplete'],
     include_package_data=True,
     python_requires='>3.1.0',
 )
