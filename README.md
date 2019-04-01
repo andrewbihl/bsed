@@ -70,8 +70,7 @@ As a point of contrast, consider the structure of SQL:
 
 `SELECT email FROM User WHERE country='Argentina';`
 
-You don't need to know SQL to be able to understand the purpose of the command. Likewise, a day's usage of SQL is 
-sufficient to recall the basics for years.
+You don't need to know SQL to be able to understand the purpose of the command. Because of its intuitive syntax, a day's usage of SQL is sufficient to recall the basics for years.
 
 ## For the average user
 
