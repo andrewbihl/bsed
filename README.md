@@ -23,7 +23,8 @@ Some example commands:
 3. Register bsed for autocompletion
     - `echo eval "$(register-python-argcomplete bsed)" >> ~/.bash_profile`
 
-Open a new shell (or run `source ~/.bash_profile`), and run `bsed commands` for some common usages and `bsed help` for 
+Open a new shell (or run `source ~/.bash_profile`). 
+Run `bsed commands` for some common usages, and run `bsed help` for 
 info on flag options.
 
 
