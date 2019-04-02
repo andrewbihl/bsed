@@ -1,0 +1,15 @@
+Regex chars:
+[abc
+]abc
+abc
+^abc
+$abc
+.abc
+|abc
+?abc
+*abc
++abc
+(abc
+)abc
+{abc
+}abc

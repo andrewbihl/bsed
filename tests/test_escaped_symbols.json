@@ -2,6 +2,18 @@
   "config": {
     "test_files_subdir": "special_chars"
   },
+  "test_backslash": [
+    {
+      "input": "escaped.txt",
+      "expected": "escaped_backslash.txt",
+      "command": ["select", "lines", "containing", "\\"]
+    },
+    {
+      "input": "escaped.txt",
+      "expected": "escaped_no-backslash.txt",
+      "command": ["delete", "\\"]
+    }
+  ],
   "test_star": [
     {
       "input": "escaped.txt",

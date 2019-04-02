@@ -36,6 +36,10 @@ class TestEscapedSymbols(unittest.TestCase):
         for t in tests:
             self.perform_test(t["command"], path.join(self.test_files_dir, t["input"]), path.join(self.test_files_dir, t["expected"]))
 
+    def test_backslash(self):
+        func_name = inspect.stack()[0].function
+        self.perform_test_from_key(func_name)
+
     def test_star(self):
         func_name = inspect.stack()[0].function
         self.perform_test_from_key(func_name)
