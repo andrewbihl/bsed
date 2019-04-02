@@ -36,6 +36,26 @@
       "input": "nonescaped.txt",
       "expected": "nonescaped_no-at-sign.txt",
       "command": ["delete", "@"]
+    },
+    {
+      "input": "emails.txt",
+      "expected": "emails.txt",
+      "command": ["select", "lines", "containing", "@"]
+    },
+    {
+      "input": "emails.txt",
+      "expected": "emails_no-@.txt",
+      "command": ["delete", "@"]
+    },
+    {
+      "input": "emails.txt",
+      "expected": "emails_lines-with-@g.txt",
+      "command": ["select", "lines", "containing", "@g"]
+    },
+    {
+      "input": "emails.txt",
+      "expected": "emails_replace-@-with-ARROBA.txt",
+      "command": ["replace", "@", "with", "ARROBA"]
     }
   ],
   "test_pound": [
