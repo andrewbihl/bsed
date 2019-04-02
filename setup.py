@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="bsed",
-    version="0.2.3",
+    version="0.2.4",
     author="Andrew Bihl",
     author_email="andrewbihlva@gmail.com",
     description="Simple english syntax for stream editing.",
