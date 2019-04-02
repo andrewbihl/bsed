@@ -84,6 +84,7 @@ class Interpreter:
             print('File argument not found.', file=sys.stderr)
             return None, None
 
+        args.command_tokens = parse_special_chars(args.command_tokens)
         cmd, words_parsed = self.parser.translate_expression(args.command_tokens, extra_args={'file': input_file})
         if cmd is None:
             return None, None
@@ -135,6 +136,6 @@ def main():
         if sys.argv[1] == 'commands':
             print_commands()
             return
-    args = parse_special_chars(sys.argv[1:])
+    # args = parse_special_chars(sys.argv[1:])
     interpreter = default_interpreter()
-    interpreter.build_command_and_execute(args)
+    interpreter.build_command_and_execute(sys.argv[1:])

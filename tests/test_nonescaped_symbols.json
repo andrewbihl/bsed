@@ -6,7 +6,7 @@
     {
       "input": "nonescaped.txt",
       "expected": "nonescaped_forward-slash.txt",
-      "command": ["select", "lines", "containing", "/"]
+      "command": ["select", "lines", "containing", "/abc"]
     },
     {
       "input": "nonescaped.txt",
@@ -18,7 +18,7 @@
     {
       "input": "nonescaped.txt",
       "expected": "nonescaped_exclamation.txt",
-      "command": ["select", "lines", "containing", "!"]
+      "command": ["select", "lines", "containing", "!abc"]
     },
     {
       "input": "nonescaped.txt",
@@ -30,7 +30,7 @@
     {
       "input": "nonescaped.txt",
       "expected": "nonescaped_at-sign.txt",
-      "command": ["select", "lines", "containing", "@"]
+      "command": ["select", "lines", "containing", "@abc"]
     },
     {
       "input": "nonescaped.txt",
@@ -42,7 +42,7 @@
     {
       "input": "nonescaped.txt",
       "expected": "nonescaped_pound.txt",
-      "command": ["select", "lines", "containing", "#"]
+      "command": ["select", "lines", "containing", "#abc"]
     },
     {
       "input": "nonescaped.txt",
@@ -54,7 +54,7 @@
     {
       "input": "nonescaped.txt",
       "expected": "nonescaped_percent.txt",
-      "command": ["select", "lines", "containing", "%"]
+      "command": ["select", "lines", "containing", "%abc"]
     },
     {
       "input": "nonescaped.txt",
@@ -66,7 +66,7 @@
     {
       "input": "nonescaped.txt",
       "expected": "nonescaped_ampersand.txt",
-      "command": ["select", "lines", "containing", "&"]
+      "command": ["select", "lines", "containing", "&abc"]
     },
     {
       "input": "nonescaped.txt",
@@ -78,7 +78,7 @@
     {
       "input": "nonescaped.txt",
       "expected": "nonescaped_underscore.txt",
-      "command": ["select", "lines", "containing", "_"]
+      "command": ["select", "lines", "containing", "_abc"]
     },
     {
       "input": "nonescaped.txt",
@@ -90,7 +90,7 @@
     {
       "input": "nonescaped.txt",
       "expected": "nonescaped_semicolon.txt",
-      "command": ["select", "lines", "containing", ";"]
+      "command": ["select", "lines", "containing", ";abc"]
     },
     {
       "input": "nonescaped.txt",
@@ -102,7 +102,7 @@
     {
       "input": "nonescaped.txt",
       "expected": "nonescaped_equals.txt",
-      "command": ["select", "lines", "containing", "="]
+      "command": ["select", "lines", "containing", "=abc"]
     },
     {
       "input": "nonescaped.txt",
@@ -114,7 +114,7 @@
     {
       "input": "nonescaped.txt",
       "expected": "nonescaped_tick.txt",
-      "command": ["select", "lines", "containing", "`"]
+      "command": ["select", "lines", "containing", "`abc"]
     },
     {
       "input": "nonescaped.txt",
@@ -126,7 +126,7 @@
     {
       "input": "nonescaped.txt",
       "expected": "nonescaped_tilde.txt",
-      "command": ["select", "lines", "containing", "~"]
+      "command": ["select", "lines", "containing", "~abc"]
     },
     {
       "input": "nonescaped.txt",
@@ -138,7 +138,7 @@
     {
       "input": "nonescaped.txt",
       "expected": "nonescaped_less-than.txt",
-      "command": ["select", "lines", "containing", "<"]
+      "command": ["select", "lines", "containing", "<abc"]
     },
     {
       "input": "nonescaped.txt",
@@ -150,7 +150,7 @@
     {
       "input": "nonescaped.txt",
       "expected": "nonescaped_greater-than.txt",
-      "command": ["select", "lines", "containing", ">"]
+      "command": ["select", "lines", "containing", ">abc"]
     },
     {
       "input": "nonescaped.txt",
@@ -162,7 +162,7 @@
     {
       "input": "nonescaped.txt",
       "expected": "nonescaped_single-quote.txt",
-      "command": ["select", "lines", "containing", "'"]
+      "command": ["select", "lines", "containing", "'abc"]
     },
     {
       "input": "nonescaped.txt",
@@ -174,7 +174,7 @@
     {
       "input": "nonescaped.txt",
       "expected": "nonescaped_double-quote.txt",
-      "command": ["select", "lines", "containing", "\""]
+      "command": ["select", "lines", "containing", "\"abc"]
     },
     {
       "input": "nonescaped.txt",
