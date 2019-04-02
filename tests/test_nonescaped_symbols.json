@@ -1,0 +1,185 @@
+{
+  "config": {
+    "test_files_subdir": "special_chars"
+  },
+  "test_forward_slash": [
+    {
+      "input": "nonescaped.txt",
+      "expected": "nonescaped_forward-slash.txt",
+      "command": ["select", "lines", "containing", "/"]
+    },
+    {
+      "input": "nonescaped.txt",
+      "expected": "nonescaped_no-forward-slash.txt",
+      "command": ["delete", "/"]
+    }
+  ],
+  "test_exclamation": [
+    {
+      "input": "nonescaped.txt",
+      "expected": "nonescaped_exclamation.txt",
+      "command": ["select", "lines", "containing", "!"]
+    },
+    {
+      "input": "nonescaped.txt",
+      "expected": "nonescaped_no-exclamation.txt",
+      "command": ["delete", "!"]
+    }
+  ],
+  "test_at_sign": [
+    {
+      "input": "nonescaped.txt",
+      "expected": "nonescaped_at-sign.txt",
+      "command": ["select", "lines", "containing", "@"]
+    },
+    {
+      "input": "nonescaped.txt",
+      "expected": "nonescaped_no-at-sign.txt",
+      "command": ["delete", "@"]
+    }
+  ],
+  "test_pound": [
+    {
+      "input": "nonescaped.txt",
+      "expected": "nonescaped_pound.txt",
+      "command": ["select", "lines", "containing", "#"]
+    },
+    {
+      "input": "nonescaped.txt",
+      "expected": "nonescaped_no-pound.txt",
+      "command": ["delete", "#"]
+    }
+  ],
+  "test_percent": [
+    {
+      "input": "nonescaped.txt",
+      "expected": "nonescaped_percent.txt",
+      "command": ["select", "lines", "containing", "%"]
+    },
+    {
+      "input": "nonescaped.txt",
+      "expected": "nonescaped_no-percent.txt",
+      "command": ["delete", "%"]
+    }
+  ],
+  "test_ampersand": [
+    {
+      "input": "nonescaped.txt",
+      "expected": "nonescaped_ampersand.txt",
+      "command": ["select", "lines", "containing", "&"]
+    },
+    {
+      "input": "nonescaped.txt",
+      "expected": "nonescaped_no-ampersand.txt",
+      "command": ["delete", "&"]
+    }
+  ],
+  "test_underscore": [
+    {
+      "input": "nonescaped.txt",
+      "expected": "nonescaped_underscore.txt",
+      "command": ["select", "lines", "containing", "_"]
+    },
+    {
+      "input": "nonescaped.txt",
+      "expected": "nonescaped_no-underscore.txt",
+      "command": ["delete", "_"]
+    }
+  ],
+  "test_semicolon": [
+    {
+      "input": "nonescaped.txt",
+      "expected": "nonescaped_semicolon.txt",
+      "command": ["select", "lines", "containing", ";"]
+    },
+    {
+      "input": "nonescaped.txt",
+      "expected": "nonescaped_no-semicolon.txt",
+      "command": ["delete", ";"]
+    }
+  ],
+  "test_equals": [
+    {
+      "input": "nonescaped.txt",
+      "expected": "nonescaped_equals.txt",
+      "command": ["select", "lines", "containing", "="]
+    },
+    {
+      "input": "nonescaped.txt",
+      "expected": "nonescaped_no-equals.txt",
+      "command": ["delete", "="]
+    }
+  ],
+  "test_tick": [
+    {
+      "input": "nonescaped.txt",
+      "expected": "nonescaped_tick.txt",
+      "command": ["select", "lines", "containing", "`"]
+    },
+    {
+      "input": "nonescaped.txt",
+      "expected": "nonescaped_no-tick.txt",
+      "command": ["delete", "`"]
+    }
+  ],
+  "test_tilde": [
+    {
+      "input": "nonescaped.txt",
+      "expected": "nonescaped_tilde.txt",
+      "command": ["select", "lines", "containing", "~"]
+    },
+    {
+      "input": "nonescaped.txt",
+      "expected": "nonescaped_no-tilde.txt",
+      "command": ["delete", "~"]
+    }
+  ],
+  "test_less_than": [
+    {
+      "input": "nonescaped.txt",
+      "expected": "nonescaped_less-than.txt",
+      "command": ["select", "lines", "containing", "<"]
+    },
+    {
+      "input": "nonescaped.txt",
+      "expected": "nonescaped_no-less-than.txt",
+      "command": ["delete", "<"]
+    }
+  ],
+  "test_greater_than": [
+    {
+      "input": "nonescaped.txt",
+      "expected": "nonescaped_greater-than.txt",
+      "command": ["select", "lines", "containing", ">"]
+    },
+    {
+      "input": "nonescaped.txt",
+      "expected": "nonescaped_no-greater-than.txt",
+      "command": ["delete", ">"]
+    }
+  ],
+  "test_single_quote": [
+    {
+      "input": "nonescaped.txt",
+      "expected": "nonescaped_single-quote.txt",
+      "command": ["select", "lines", "containing", "'"]
+    },
+    {
+      "input": "nonescaped.txt",
+      "expected": "nonescaped_no-single-quote.txt",
+      "command": ["delete", "'"]
+    }
+  ],
+  "test_double_quote": [
+    {
+      "input": "nonescaped.txt",
+      "expected": "nonescaped_double-quote.txt",
+      "command": ["select", "lines", "containing", "\""]
+    },
+    {
+      "input": "nonescaped.txt",
+      "expected": "nonescaped_no-double-quote.txt",
+      "command": ["delete", "\""]
+    }
+  ]
+}

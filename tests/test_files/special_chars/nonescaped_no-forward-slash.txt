@@ -1,5 +1,5 @@
 The following characters shouldn't need escaping.
-/
+
 !
 @
 #

@@ -1,16 +1,2 @@
 The following characters shouldn't need escaping.
-/
-!
-@
-#
-%
-&
-_
-;
-=
-`
-~
-<
->
 '
-"
