@@ -1,0 +1,155 @@
+{
+  "config": {
+    "test_files_subdir": "special_chars"
+  },
+  "test_star": [
+    {
+      "input": "escaped.txt",
+      "expected": "escaped_star.txt",
+      "command": ["select", "lines", "containing", "\\*"]
+    },
+    {
+      "input": "escaped.txt",
+      "expected": "escaped_no-star.txt",
+      "command": ["delete", "\\*"]
+    }
+  ],
+  "test_dot": [
+    {
+      "input": "escaped.txt",
+      "expected": "escaped_dot.txt",
+      "command": ["select", "lines", "containing", "\\."]
+    },
+    {
+      "input": "escaped.txt",
+      "expected": "escaped_no-dot.txt",
+      "command": ["delete", "\\."]
+    }
+  ],
+  "test_question_mark": [
+    {
+      "input": "escaped.txt",
+      "expected": "escaped_question-mark.txt",
+      "command": ["select", "lines", "containing", "\\?"]
+    },
+    {
+      "input": "escaped.txt",
+      "expected": "escaped_no-question-mark.txt",
+      "command": ["delete", "\\?"]
+    }
+  ],
+  "test_plus": [
+    {
+      "input": "escaped.txt",
+      "expected": "escaped_plus.txt",
+      "command": ["select", "lines", "containing", "\\+"]
+    },
+    {
+      "input": "escaped.txt",
+      "expected": "escaped_no-plus.txt",
+      "command": ["delete", "\\+"]
+    }
+  ],
+  "test_pipe": [
+    {
+      "input": "escaped.txt",
+      "expected": "escaped_pipe.txt",
+      "command": ["select", "lines", "containing", "\\|"]
+    },
+    {
+      "input": "escaped.txt",
+      "expected": "escaped_no-pipe.txt",
+      "command": ["delete", "\\|"]
+    }
+  ],
+  "test_caret": [
+    {
+      "input": "escaped.txt",
+      "expected": "escaped_caret.txt",
+      "command": ["select", "lines", "containing", "\\^"]
+    },
+    {
+      "input": "escaped.txt",
+      "expected": "escaped_no-caret.txt",
+      "command": ["delete", "\\^"]
+    }
+  ],
+  "test_dollar": [
+    {
+      "input": "escaped.txt",
+      "expected": "escaped_dollar.txt",
+      "command": ["select", "lines", "containing", "\\\\$"]
+    },
+    {
+      "input": "escaped.txt",
+      "expected": "escaped_no-dollar.txt",
+      "command": ["delete", "\\\\$"]
+    }
+  ],
+  "test_brackets": [
+    {
+      "input": "escaped.txt",
+      "expected": "escaped_left-bracket.txt",
+      "command": ["select", "lines", "containing", "\\["]
+    },
+    {
+      "input": "escaped.txt",
+      "expected": "escaped_no-left-bracket.txt",
+      "command": ["delete", "\\["]
+    },
+    {
+      "input": "escaped.txt",
+      "expected": "escaped_right-bracket.txt",
+      "command": ["select", "lines", "containing", "\\]"]
+    },
+    {
+      "input": "escaped.txt",
+      "expected": "escaped_no-right-bracket.txt",
+      "command": ["delete", "\\]"]
+    }
+  ],
+  "test_braces": [
+    {
+      "input": "escaped.txt",
+      "expected": "escaped_left-brace.txt",
+      "command": ["select", "lines", "containing", "\\{"]
+    },
+    {
+      "input": "escaped.txt",
+      "expected": "escaped_no-left-brace.txt",
+      "command": ["delete", "\\{"]
+    },
+    {
+      "input": "escaped.txt",
+      "expected": "escaped_right-brace.txt",
+      "command": ["select", "lines", "containing", "\\}"]
+    },
+    {
+      "input": "escaped.txt",
+      "expected": "escaped_no-right-brace.txt",
+      "command": ["delete", "\\}"]
+    }
+  ],
+  "test_parentheses": [
+    {
+      "input": "escaped.txt",
+      "expected": "escaped_left-parenthesis.txt",
+      "command": ["select", "lines", "containing", "\\("]
+    },
+    {
+      "input": "escaped.txt",
+      "expected": "escaped_no-left-parenthesis.txt",
+      "command": ["delete", "\\("]
+    },
+    {
+      "input": "escaped.txt",
+      "expected": "escaped_right-parenthesis.txt",
+      "command": ["select", "lines", "containing", "\\)"]
+    },
+    {
+      "input": "escaped.txt",
+      "expected": "escaped_no-right-parenthesis.txt",
+      "command": ["delete", "\\)"]
+    }
+  ]
+}

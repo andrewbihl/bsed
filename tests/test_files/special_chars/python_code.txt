@@ -1,0 +1,5 @@
+print('Here\'s a list:\n')
+print('\t1. Thing')
+print('\t2. Other thing')
+guys_name = 'Joe'
+print('The guys name is %s' % guys_name)

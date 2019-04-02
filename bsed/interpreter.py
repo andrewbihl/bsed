@@ -135,7 +135,6 @@ def main():
         if sys.argv[1] == 'commands':
             print_commands()
             return
-
     args = parse_special_chars(sys.argv[1:])
     interpreter = default_interpreter()
     interpreter.build_command_and_execute(args)

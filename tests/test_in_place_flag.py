@@ -8,6 +8,14 @@ import bsed.definitions as definitions
 from bsed import interpreter
 
 
+def get_test_files_dir(test_dict: dict):
+    if 'config' in test_dict and 'test_files_subdir' in test_dict['config']:
+        test_files_dir = path.join(definitions.TEST_FILES_DIR, test_dict['config']['test_files_subdir'])
+    else:
+        test_files_dir = definitions.TEST_FILES_DIR
+    return test_files_dir
+
+
 class TestInPlaceFlag(unittest.TestCase):
 
     @staticmethod
@@ -37,10 +45,15 @@ class TestInPlaceFlag(unittest.TestCase):
             print(path.split(test_file)[-1])
             with open(test_file, 'r') as fin:
                 test_dict = json.load(fin)
+
+            test_files_dir = get_test_files_dir(test_dict)
+
             for command, tests in test_dict.items():
+                if not command.startswith('test_'):
+                    continue
                 print('\t%s' % command)
                 for test in tests:
-                    input_file = path.join(definitions.TEST_FILES_DIR, test['input'])
-                    expected_file = path.join(definitions.TEST_FILES_DIR, test['expected'])
+                    input_file = path.join(test_files_dir, test['input'])
+                    expected_file = path.join(test_files_dir, test['expected'])
                     command = test['command'] + ['-i']
                     self.perform_test(command, input_file, expected_file)
