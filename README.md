@@ -42,12 +42,13 @@ As a result, three types of commands can be created:
 - Line filter + word operations
     - `on lines containing "source-url" prepend "www\..*\.com" with "https://"`
 
+
 \* select is only for line operations currently.
 
 
 # Motivation
 
-**TLDR**: Most batch text processing tools are too complex for the very occasional user. bsed has simple, english 
+**TLDR:** Most batch text processing tools are too complex for the very occasional user. bsed has simple, english 
 syntax with bash autocomplete so that you don't have to go searching Stackoverflow each time you need sed/AWK/Perl.
 
 Many common text transformations are fit for tools such as grep, sed, and AWK. These utilities allow for fast 
@@ -145,7 +146,7 @@ To solve this, bsed implements many common command types in an understandable En
  
  ## Use the -t flag to learn or debug
  
- Any command can be executed with the -t flag and the command translation will be printed. 
+ Any command can be run with the -t flag and the command translation will be printed (not executed). 
  
  This is nice to debug 
  regex, build up  more complex queries, or just learn some Perl through examples. Without having to remember Perl from 
