@@ -28,21 +28,21 @@ class TestSelect(unittest.TestCase):
             self.perform_test(t["command"], path.join(definitions.TEST_FILES_DIR, t["input"]), path.join(definitions.TEST_FILES_DIR, t["expected"]))
 
     def test_select_lines_containing_word(self):
-        func_name = inspect.stack()[0].function
+        func_name = inspect.stack()[0][3]
         self.perform_test_from_key(func_name)
 
     def test_select_lines_starting_with_word(self):
-        func_name = inspect.stack()[0].function
+        func_name = inspect.stack()[0][3]
         self.perform_test_from_key(func_name)
 
     def test_select_lines_ending_with_word(self):
-        func_name = inspect.stack()[0].function
+        func_name = inspect.stack()[0][3]
         self.perform_test_from_key(func_name)
 
     def test_select_lines_m_to_n(self):
-        func_name = inspect.stack()[0].function
+        func_name = inspect.stack()[0][3]
         self.perform_test_from_key(func_name)
 
     def test_select_lines_m_to_n(self):
-        func_name = inspect.stack()[0].function
+        func_name = inspect.stack()[0][3]
         self.perform_test_from_key(func_name)

@@ -28,21 +28,21 @@ class TestOnLinesStartingWith(unittest.TestCase):
             self.perform_test(t["command"], path.join(definitions.TEST_FILES_DIR, t["input"]), path.join(definitions.TEST_FILES_DIR, t["expected"]))
 
     def test_on_lines_delete(self):
-        func_name = inspect.stack()[0].function
+        func_name = inspect.stack()[0][3]
         self.perform_test_from_key(func_name)
 
     def test_on_lines_replace(self):
-        func_name = inspect.stack()[0].function
+        func_name = inspect.stack()[0][3]
         self.perform_test_from_key(func_name)
 
     def test_on_lines_prepend(self):
-        func_name = inspect.stack()[0].function
+        func_name = inspect.stack()[0][3]
         self.perform_test_from_key(func_name)
 
     def test_on_lines_append(self):
-        func_name = inspect.stack()[0].function
+        func_name = inspect.stack()[0][3]
         self.perform_test_from_key(func_name)
 
     def test_on_lines_wrap(self):
-        func_name = inspect.stack()[0].function
+        func_name = inspect.stack()[0][3]
         self.perform_test_from_key(func_name)

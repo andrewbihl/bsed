@@ -37,45 +37,45 @@ class TestEscapedSymbols(unittest.TestCase):
             self.perform_test(t["command"], path.join(self.test_files_dir, t["input"]), path.join(self.test_files_dir, t["expected"]))
 
     def test_backslash(self):
-        func_name = inspect.stack()[0].function
+        func_name = inspect.stack()[0][3]
         self.perform_test_from_key(func_name)
 
     def test_star(self):
-        func_name = inspect.stack()[0].function
+        func_name = inspect.stack()[0][3]
         self.perform_test_from_key(func_name)
 
     def test_dot(self):
-        func_name = inspect.stack()[0].function
+        func_name = inspect.stack()[0][3]
         self.perform_test_from_key(func_name)
 
     def test_question_mark(self):
-        func_name = inspect.stack()[0].function
+        func_name = inspect.stack()[0][3]
         self.perform_test_from_key(func_name)
 
     def test_plus(self):
-        func_name = inspect.stack()[0].function
+        func_name = inspect.stack()[0][3]
         self.perform_test_from_key(func_name)
 
     def test_pipe(self):
-        func_name = inspect.stack()[0].function
+        func_name = inspect.stack()[0][3]
         self.perform_test_from_key(func_name)
 
     def test_dollar(self):
-        func_name = inspect.stack()[0].function
+        func_name = inspect.stack()[0][3]
         self.perform_test_from_key(func_name)
 
     def test_caret(self):
-        func_name = inspect.stack()[0].function
+        func_name = inspect.stack()[0][3]
         self.perform_test_from_key(func_name)
 
     def test_brackets(self):
-        func_name = inspect.stack()[0].function
+        func_name = inspect.stack()[0][3]
         self.perform_test_from_key(func_name)
 
     def test_braces(self):
-        func_name = inspect.stack()[0].function
+        func_name = inspect.stack()[0][3]
         self.perform_test_from_key(func_name)
 
     def test_parentheses(self):
-        func_name = inspect.stack()[0].function
+        func_name = inspect.stack()[0][3]
         self.perform_test_from_key(func_name)

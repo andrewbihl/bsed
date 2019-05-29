@@ -37,61 +37,61 @@ class TestNonEscapedSymbols(unittest.TestCase):
             self.perform_test(t["command"], path.join(self.test_files_dir, t["input"]), path.join(self.test_files_dir, t["expected"]))
 
     def test_forward_slash(self):
-        func_name = inspect.stack()[0].function
+        func_name = inspect.stack()[0][3]
         self.perform_test_from_key(func_name)
 
     def test_exclamation(self):
-        func_name = inspect.stack()[0].function
+        func_name = inspect.stack()[0][3]
         self.perform_test_from_key(func_name)
 
     def test_at_sign(self):
-        func_name = inspect.stack()[0].function
+        func_name = inspect.stack()[0][3]
         self.perform_test_from_key(func_name)
 
     def test_pound(self):
-        func_name = inspect.stack()[0].function
+        func_name = inspect.stack()[0][3]
         self.perform_test_from_key(func_name)
 
     def test_percent(self):
-        func_name = inspect.stack()[0].function
+        func_name = inspect.stack()[0][3]
         self.perform_test_from_key(func_name)
 
     def test_ampersand(self):
-        func_name = inspect.stack()[0].function
+        func_name = inspect.stack()[0][3]
         self.perform_test_from_key(func_name)
 
     def test_underscore(self):
-        func_name = inspect.stack()[0].function
+        func_name = inspect.stack()[0][3]
         self.perform_test_from_key(func_name)
 
     def test_semicolon(self):
-        func_name = inspect.stack()[0].function
+        func_name = inspect.stack()[0][3]
         self.perform_test_from_key(func_name)
 
     def test_equals(self):
-        func_name = inspect.stack()[0].function
+        func_name = inspect.stack()[0][3]
         self.perform_test_from_key(func_name)
 
     def test_tick(self):
-        func_name = inspect.stack()[0].function
+        func_name = inspect.stack()[0][3]
         self.perform_test_from_key(func_name)
 
     def test_tilde(self):
-        func_name = inspect.stack()[0].function
+        func_name = inspect.stack()[0][3]
         self.perform_test_from_key(func_name)
 
     def test_less_than(self):
-        func_name = inspect.stack()[0].function
+        func_name = inspect.stack()[0][3]
         self.perform_test_from_key(func_name)
 
     def test_greater_than(self):
-        func_name = inspect.stack()[0].function
+        func_name = inspect.stack()[0][3]
         self.perform_test_from_key(func_name)
 
     def test_single_quote(self):
-        func_name = inspect.stack()[0].function
+        func_name = inspect.stack()[0][3]
         self.perform_test_from_key(func_name)
 
     def test_double_quote(self):
-        func_name = inspect.stack()[0].function
+        func_name = inspect.stack()[0][3]
         self.perform_test_from_key(func_name)
