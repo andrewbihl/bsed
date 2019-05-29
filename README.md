@@ -25,6 +25,25 @@ Open a new shell (or run `source ~/.bash_profile`).
 Run `bsed commands` for some common usages, and run `bsed help` for 
 info on flag options.
 
+## Command types
+
+Currently, there are two types of syntax:
+1. Word or entire-line operations*
+    - `select/delete/append/prepend/wrap {some pattern or line filter}`
+2. Line filters
+    - `lines containing/starting with/ending with {some pattern}`
+    - `lines {m} to {n}`
+    
+As a result, three types of commands can be created:
+- Word operations
+    - `append "google" with "\.com"`
+- Line operations
+    - `delete lines containing "UNC"`
+- Line filter + word operations
+    - `on lines containing "source-url" prepend "www\..*\.com" with "https://"`
+
+\* select is only for line operations currently.
+
 
 # Motivation
 
@@ -40,18 +59,18 @@ making them easy to rely on and good subjects for to find support/help.
   - Getting lines from a file containing a word
   - Find-and-replace
   - Deleting, replacing, or clearing lines containing a regex pattern match
-  - Placing text at beginning or end of certain lines
+  - Placing text at the beginning or end of certain lines
   - Getting a range of line numbers
 
 ## Problems with grep/sed/AWK
 
 1. People don't know which tool to use
-2. Varying levels of regex support
-3. Varying levels of efficiency
+2. Inconsistent levels of regex support
+3. Inconsistent levels of efficiency
 
 ## Enter Perl
 
-Perl solves these issues–in theory–by providing a one-stop shop for all of these uses. 
+Perl solves these issues (in theory) by providing a one-stop shop for all of these uses. 
 Perl one-liners provide the set of functionality containing grep, sed, and AWK use cases, and have syntax designed to
  mimic that of sed. Furthermore, Perl includes advanced regex support and is for many cases more efficient than any of 
  its counterparts. 
@@ -63,7 +82,8 @@ stream editing.
 ## Why not use Perl?
 
 In practice, few people know sed well enough to fire off commands from memory. For the casual or infrequent user, 
-usually the path to success is to search stackoverflow.com for a quick sed command they can parse and tweak for their purposes. 
+usually the path to success is to search Stackoverflow for a quick sed command they can parse and tweak for their 
+purposes. 
 
 Even fewer people know Perl, as the syntax proves to be even more daunting and difficult to remember than sed. 
 
