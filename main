@@ -1,0 +1,8 @@
+#!/usr/bin/env python3
+# PYTHON_ARGCOMPLETE_OK
+from bsed.interpreter import main
+import logging
+
+if __name__ == "__main__":
+    logging.root.setLevel(logging.DEBUG)
+    main()
